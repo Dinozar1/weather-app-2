@@ -28,7 +28,7 @@ endmacro()
 
 include(CMakeFindDependencyMacro)
 
-if (OFF)
+if (ON)
     if (NOT "")
         find_dependency(glfw3 CONFIG)
     endif()

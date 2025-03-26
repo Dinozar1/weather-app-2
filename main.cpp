@@ -1,5 +1,6 @@
 #include <iostream>
 #include "UseImGui.h"
+#include "api/StationData.h"
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 
@@ -41,6 +42,9 @@ int main() {
     // ImGui Initialization
     CustomImGui myimgui;  // Create an instance of custom ImGui wrapper
     CustomImGui::Init(window, glsl_version);  // Initialize ImGui with window and GLSL version
+
+    string jsonResponse = StationData::FetchStations();
+    StationData::ParseStations(jsonResponse);
 
     // Main Rendering Loop
     while (!glfwWindowShouldClose(window)) {  // Continue until window close is requested
