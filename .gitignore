@@ -1,0 +1,17 @@
+# C++ build directories
+cmake-build-debug/
+cmake-build-release/
+build/
+
+# IDE files
+.idea/
+.vscode/
+
+# Compiled files
+*.o
+*.exe
+*.out
+
+# Dependency directories
+vcpkg/
+
