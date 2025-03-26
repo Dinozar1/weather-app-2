@@ -26,6 +26,7 @@ public:
 class CustomImGui final : public UseImGui {
 public:
     void Update() override;
+    void ShowStationSensorsWindow();
 
 private:
     // Store searched stations within radius
@@ -35,4 +36,10 @@ private:
     char addressBuffer[256] = "";
     float searchRadius = 10.0f; // Default 10 km
     bool isRadiusSearch = false;
+
+    //Selecting sensors methods
+    const StationData::Station *selectedStation = nullptr;
+    bool showSensorsWindow = false;
+
+    static void FetchStationSensors(int stationId);
 };

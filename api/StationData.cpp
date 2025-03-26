@@ -13,15 +13,14 @@ void curlCleanup(CURL *curl) {
 
 vector<StationData::Station> StationData::stations;
 
-string StationData::FetchStations() {
+string StationData::FetchStations(const string& uri) {
     string readBuffer;
 
     curl_global_init(CURL_GLOBAL_DEFAULT); // init curl
 
     if (CURL *curl = curl_easy_init()) {  //create curl handle
-        const auto url = "https://api.gios.gov.pl/pjp-api/rest/station/findAll";
-
-        curl_easy_setopt(curl, CURLOPT_URL, url); // set the url
+        cout<<uri<<endl;
+        curl_easy_setopt(curl, CURLOPT_URL, uri.c_str()); // set the url
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
 
@@ -66,11 +65,8 @@ void StationData::ParseStations(const string& jsonStr) {
         //Clear vector to update stations data
         stations.clear();
 
-        int counter = 0;
         for ( const auto& stationJson : json) {
             Station station;
-
-            counter++;
 
             // parse station details to object
             // Example object:
@@ -109,12 +105,9 @@ void StationData::ParseStations(const string& jsonStr) {
 
             stations.push_back(station);
         }
-
-        cout << stations.size() << endl;
     }
 
     catch (const json::exception& e) {
         cout << "JSON parsing error: "<< e.what() << endl;
     }
 }
-

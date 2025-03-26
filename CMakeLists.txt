@@ -9,6 +9,8 @@ add_executable(weather_app_2 main.cpp
         api/StationData.cpp
         api/StationData.h
         api/GeoLocation.cpp
+        api/SensorsData.cpp
+        api/SensorsData.h
 )
 
 find_package(glad CONFIG REQUIRED)

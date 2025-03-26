@@ -43,7 +43,7 @@ int main() {
     CustomImGui myimgui;  // Create an instance of custom ImGui wrapper
     CustomImGui::Init(window, glsl_version);  // Initialize ImGui with window and GLSL version
 
-    string jsonResponse = StationData::FetchStations();
+    const string jsonResponse = StationData::FetchStations("https://api.gios.gov.pl/pjp-api/rest/station/findAll");
     StationData::ParseStations(jsonResponse);
 
     // Main Rendering Loop

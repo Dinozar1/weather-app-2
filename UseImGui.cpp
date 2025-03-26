@@ -1,7 +1,7 @@
 #include "UseImGui.h"
-#include <algorithm>
 #include <bits/ranges_algo.h>
 #include "./api/StationData.h"
+#include "./api/SensorsData.h"
 
 void UseImGui::Init(GLFWwindow* window, const char* glsl_version) {
     IMGUI_CHECKVERSION();
@@ -19,10 +19,8 @@ void UseImGui::NewFrame() {
     ImGui::NewFrame();
 }
 
-
-
 void UseImGui::Update() {
-    ImGui::Begin("Conan Logo");
+    ImGui::Begin("");
     ImGui::End();
 }
 void UseImGui::Render() {
@@ -142,7 +140,13 @@ void CustomImGui::Update() {
 
             ImGui::TableNextRow();
 
+            // Inside the stations table loop, add a selection mechanism
             ImGui::TableNextColumn();
+            if (ImGui::Selectable(("##row" + std::to_string(station.id)).c_str(), false, ImGuiSelectableFlags_SpanAllColumns)) {
+                selectedStation = &station;
+                FetchStationSensors(station.id);
+                showSensorsWindow = true;
+            }
             ImGui::Text("%d", station.id);
 
             ImGui::TableNextColumn();
@@ -180,5 +184,86 @@ void CustomImGui::Update() {
         }
     }
 
+
+    ShowStationSensorsWindow();
     ImGui::End();
+}
+
+void CustomImGui::ShowStationSensorsWindow() {
+    if (showSensorsWindow && selectedStation != nullptr) {
+
+        bool isOpen = true;
+
+        ImGui::Begin("Station Sensors", &isOpen, ImGuiWindowFlags_NoCollapse);
+
+        if (!isOpen) {
+            showSensorsWindow = false;
+        }
+
+        //display selected station information
+        ImGui::Text("Station: %s", selectedStation->stationName.c_str());
+        ImGui::Text("City: %s", selectedStation->cityName.c_str());
+        ImGui::Text("Province: %s", selectedStation->provinceName.c_str());
+
+        constexpr ImGuiTableFlags tableFlags =
+            ImGuiTableFlags_BordersOuter |
+                ImGuiTableFlags_BordersV |
+                    ImGuiTableFlags_RowBg |
+                            ImGuiTableFlags_Resizable;
+
+        const float TEXT_BASE_HEIGHT = ImGui::GetTextLineHeightWithSpacing();
+        if (ImGui::BeginTable("Sensors", 5, tableFlags, ImVec2(0.0f, TEXT_BASE_HEIGHT * 13))) {
+            // Table headers
+            ImGui::TableSetupScrollFreeze(0, 1);
+            ImGui::TableNextColumn();
+            ImGui::TableHeader("ID");
+            ImGui::TableNextColumn();
+            ImGui::TableHeader("Parameter Name");
+            ImGui::TableNextColumn();
+            ImGui::TableHeader("Parameter Formula");
+            ImGui::TableNextColumn();
+            ImGui::TableHeader("Parameter Code");
+            ImGui::TableNextColumn();
+            ImGui::TableHeader("Parameter Id");
+
+            for (const auto& sensor : SensorsData::sensors) {
+                if (sensor.stationId == selectedStation->id) {
+                    ImGui::TableNextRow();
+
+                    ImGui::TableNextColumn();
+                    ImGui::Text("%d", sensor.id);
+
+                    ImGui::TableNextColumn();
+                    ImGui::Text("%s", sensor.paramName.c_str());
+
+                    ImGui::TableNextColumn();
+                    ImGui::Text("%s", sensor.paramFormula.c_str());
+
+                    ImGui::TableNextColumn();
+                    ImGui::Text("%s", sensor.paramCode.c_str());
+
+                    ImGui::TableNextColumn();
+                    ImGui::Text("%d", sensor.idParam);
+                }
+            }
+
+            ImGui::EndTable();
+
+        }
+
+        ImGui::End();
+    }
+}
+
+
+void CustomImGui::FetchStationSensors(const int stationId) {
+    SensorsData::sensors.clear();
+
+    const string sensorsUrl = "https://api.gios.gov.pl/pjp-api/rest/station/sensors/" + to_string(stationId);
+
+    const string sensorsJsonStr = StationData::FetchStations(sensorsUrl);
+
+    if (!sensorsJsonStr.empty()) SensorsData::ParseSensorData(sensorsJsonStr);
+
+
 }

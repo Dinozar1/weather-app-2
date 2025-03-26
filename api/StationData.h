@@ -32,7 +32,7 @@ class StationData {
 
     static vector<Station> stations;
 
-    static string FetchStations();
+    static string FetchStations(const string& uri);
 
     static void ParseStations(const string& jsonStr);
 
@@ -41,4 +41,6 @@ class StationData {
     static double CalculateDistance(double lat1, double lon1, double lat2, double lon2);
 
     static GeoCoordinates GeocodeAddress(const std::string &address);
+
+    friend class SensorData;
 };
