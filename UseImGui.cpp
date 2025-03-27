@@ -276,6 +276,15 @@ void CustomImGui::ShowStationSensorsWindow() {
             static char startTimeBuffer[32] = "00:00";
             static char endTimeBuffer[32] = "23:59";
 
+            double minValue = std::numeric_limits<double>::max();
+            double maxValue = std::numeric_limits<double>::lowest();
+            double firstValue = 0;
+            double lastValue = 0;
+            string dateOfMin;
+            string dateOfMax;
+            double average = 0;
+            int valueCount = 0;
+
             ImGui::Text("Start Date (YYYY-MM-DD):");
             ImGui::InputText("##StartDate", startDateBuffer, IM_ARRAYSIZE(startDateBuffer));
 
@@ -328,6 +337,8 @@ void CustomImGui::ShowStationSensorsWindow() {
                     endTime = mktime(&endTm);
                 }
 
+                bool isFirstValue = true;
+
                 // Filter values based on date and time range
                 for (const auto& value : selectedSensor->sensorsValues) {
 
@@ -342,6 +353,26 @@ void CustomImGui::ShowStationSensorsWindow() {
                     // pass only values that fits into time schedule
                     if ((startTime == 0 || valueTime >= startTime) && (endTime == 0 || valueTime <= endTime)) {
 
+                        // calculate max and min value
+                        if (value.value < minValue) {
+                            minValue = value.value;
+                            dateOfMin = value.data;
+                        }
+                        if (value.value > maxValue) {
+                            maxValue = value.value;
+                            dateOfMax = value.data;
+                        }
+
+                        if (isFirstValue) {
+                            firstValue = value.value;
+                            isFirstValue = false;
+                        }
+
+                        lastValue = value.value;
+
+                        average += value.value;
+                        valueCount++;
+
                         ImGui::TableNextRow();
                         ImGui::TableNextColumn();
                         ImGui::Text("%s", value.data.c_str());
@@ -350,14 +381,15 @@ void CustomImGui::ShowStationSensorsWindow() {
                     }
                 }
 
-
                 ImGui::EndTable();
+
+
             }
 
             if (showSensorsValueBox && selectedSensor) {
                 ImGui::SameLine();
 
-                ImGui::BeginChild("Chart", ImVec2(400, 0.0f), true);
+                ImGui::BeginChild("Chart", ImVec2(300, 0), true);
 
                 if (ImPlot::BeginPlot(selectedSensor->paramName.c_str(), ImVec2(-1, 0))) {
                     vector<double> dates;
@@ -387,7 +419,7 @@ void CustomImGui::ShowStationSensorsWindow() {
                         time_t valueTime = mktime(&valueTm);
 
 
-                        if ((startTime == 0) || (valueTime >= startTime) && (endTime == 0) || (valueTime <= endTime)) {
+                        if ((startTime == 0 || valueTime >= startTime) && (endTime == 0 || valueTime <= endTime)) {
                             dates.push_back(counter++);
                             values.push_back(it->value);
                         }
@@ -401,7 +433,18 @@ void CustomImGui::ShowStationSensorsWindow() {
 
 
                 }
+            //calculate average
+            average = valueCount > 0 ? average / valueCount : 0;
 
+            if (valueCount > 0) {
+                ImGui::Text("Statistical Analysis:");
+                ImGui::Text("Minimum Value: %.2f (on %s)", minValue, dateOfMin.c_str());
+                ImGui::Text("Maximum Value: %.2f (on %s)", maxValue, dateOfMax.c_str());
+                ImGui::Text("Average Value: %.2f", average);
+
+                if (firstValue <= lastValue) ImGui::Text("The trend is downward");
+                else ImGui::Text("The trend is upward");
+            }
 
 
             }
