@@ -8,6 +8,7 @@
 #include <algorithm>
 #include <ranges>
 #include "./api/StationData.h"
+#include "api/SensorsData.h"
 
 class UseImGui {
 public:
@@ -42,4 +43,12 @@ private:
     bool showSensorsWindow = false;
 
     static void FetchStationSensors(int stationId);
+
+    //Sensors values
+    const SensorsData::Sensor *selectedSensor = nullptr;
+    bool showSensorsValueBox = false;
+
+    static void FetchSensorValues(int sensorId);
+
+
 };

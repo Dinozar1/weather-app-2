@@ -19,7 +19,6 @@ string StationData::FetchStations(const string& uri) {
     curl_global_init(CURL_GLOBAL_DEFAULT); // init curl
 
     if (CURL *curl = curl_easy_init()) {  //create curl handle
-        cout<<uri<<endl;
         curl_easy_setopt(curl, CURLOPT_URL, uri.c_str()); // set the url
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);

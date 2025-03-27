@@ -2,10 +2,16 @@
 #include <bits/ranges_algo.h>
 #include "./api/StationData.h"
 #include "./api/SensorsData.h"
+#include "api/SensorsData.h"
+#include <implot.h>
+#include "implot.h"
+#include "implot_internal.h"
+
 
 void UseImGui::Init(GLFWwindow* window, const char* glsl_version) {
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
+    ImPlot::CreateContext();
 
     // Setup platform bindings
     ImGui_ImplGlfw_InitForOpenGL(window, true);
@@ -31,6 +37,8 @@ void UseImGui::Shutdown() {
     // Cleanup
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();
+
+    ImPlot::DestroyContext();
     ImGui::DestroyContext();
 }
 
@@ -230,7 +238,15 @@ void CustomImGui::ShowStationSensorsWindow() {
                 if (sensor.stationId == selectedStation->id) {
                     ImGui::TableNextRow();
 
+
                     ImGui::TableNextColumn();
+
+                    if (ImGui::Selectable(("##row" + std::to_string(sensor.id)).c_str(), false, ImGuiSelectableFlags_SpanAllColumns)) {
+                        selectedSensor = &sensor;
+                        FetchSensorValues(sensor.id);
+                        showSensorsValueBox = true;
+                    }
+
                     ImGui::Text("%d", sensor.id);
 
                     ImGui::TableNextColumn();
@@ -251,9 +267,150 @@ void CustomImGui::ShowStationSensorsWindow() {
 
         }
 
+        if (showSensorsValueBox) {
+            ImGui::Text("Selected parameter: %s", selectedSensor->paramName.c_str());
+
+            // variables for inputs
+            static char startDateBuffer[32] = "";
+            static char endDateBuffer[32] = "";
+            static char startTimeBuffer[32] = "00:00";
+            static char endTimeBuffer[32] = "23:59";
+
+            ImGui::Text("Start Date (YYYY-MM-DD):");
+            ImGui::InputText("##StartDate", startDateBuffer, IM_ARRAYSIZE(startDateBuffer));
+
+            ImGui::Text("Start Time (HH:MM):");
+            ImGui::InputText("##StartTime", startTimeBuffer, IM_ARRAYSIZE(startTimeBuffer));
+
+            ImGui::Text("End Date (YYYY-MM-DD):");
+            ImGui::InputText("##EndDate", endDateBuffer, IM_ARRAYSIZE(endDateBuffer));
+
+            ImGui::Text("End Time (HH:MM):");
+            ImGui::InputText("##EndTime", endTimeBuffer, IM_ARRAYSIZE(endTimeBuffer));
+
+            constexpr ImGuiTableFlags tableFlagsValues =
+                ImGuiTableFlags_ScrollY |
+                ImGuiTableFlags_BordersOuter |
+                ImGuiTableFlags_BordersV |
+                ImGuiTableFlags_RowBg |
+                ImGuiTableFlags_SizingFixedSame;
+
+            if (ImGui::BeginTable("Values of Sensor", 2, tableFlagsValues, ImVec2(300.0f, TEXT_BASE_HEIGHT * 13))) {
+                ImGui::TableSetupColumn("Date and Time", ImGuiTableColumnFlags_WidthFixed, 150.0f);
+                ImGui::TableSetupColumn("Value", ImGuiTableColumnFlags_WidthFixed, 100.0f);
+                ImGui::TableSetupScrollFreeze(0, 1);
+                ImGui::TableNextColumn();
+                ImGui::TableHeader("Date and Time");
+                ImGui::TableNextColumn();
+                ImGui::TableHeader("Value");
+
+
+                // Convert start and end dates and times to time_t for comparison
+                time_t startTime = 0, endTime = 0;
+                struct tm startTm = {0}, endTm = {0}; // https://cplusplus.com/reference/ctime/tm/
+
+                //check if there is something in input
+                if (strlen(startDateBuffer) > 0 && strlen(startTimeBuffer) > 0) {
+                    // connect date and hour to one var
+                    auto startDateTime = string(startDateBuffer) + " " + string(startTimeBuffer);
+
+                    // change string into tm structure
+                    strptime(startDateTime.c_str(), "%Y-%m-%d %H:%M", &startTm);
+
+                    // change tm into time_t var
+                    startTime = mktime(&startTm);
+                }
+
+                // same for tail
+                if (strlen(endDateBuffer) > 0 && strlen(endTimeBuffer) > 0) {
+                    string endDateTime = string(endDateBuffer) + " " + string(endTimeBuffer);
+                    strptime(endDateTime.c_str(), "%Y-%m-%d %H:%M", &endTm);
+                    endTime = mktime(&endTm);
+                }
+
+                // Filter values based on date and time range
+                for (const auto& value : selectedSensor->sensorsValues) {
+
+                    tm valueTm = {0};
+
+                    //change string into tm type
+                    strptime(value.data.c_str(), "%Y-%m-%d %H:%M", &valueTm);
+
+                    //convert tm into time_t
+                    time_t valueTime = mktime(&valueTm);
+
+                    // pass only values that fits into time schedule
+                    if ((startTime == 0 || valueTime >= startTime) && (endTime == 0 || valueTime <= endTime)) {
+
+                        ImGui::TableNextRow();
+                        ImGui::TableNextColumn();
+                        ImGui::Text("%s", value.data.c_str());
+                        ImGui::TableNextColumn();
+                        ImGui::Text("%f", value.value);
+                    }
+                }
+
+
+                ImGui::EndTable();
+            }
+
+            if (showSensorsValueBox && selectedSensor) {
+                ImGui::SameLine();
+
+                ImGui::BeginChild("Chart", ImVec2(400, 0.0f), true);
+
+                if (ImPlot::BeginPlot(selectedSensor->paramName.c_str(), ImVec2(-1, 0))) {
+                    vector<double> dates;
+                    vector<double> values;
+
+                    int counter = 0;
+
+                    // Reuse the filtered values for the chart
+                    time_t startTime = 0, endTime = 0;
+                    struct tm startTm = {0}, endTm = {0};
+
+                    // Do the same thing on chart data
+                    if (strlen(startDateBuffer) > 0 && strlen(startTimeBuffer) > 0) {
+                        string startDateTime = string(startDateBuffer) + " " + string(startTimeBuffer);
+                        strptime(startDateTime.c_str(), "%Y-%m-%d %H:%M", &startTm);
+                        startTime = mktime(&startTm);
+                    }
+                    if (strlen(endDateBuffer) > 0 && strlen(endTimeBuffer) > 0) {
+                        string endDateTime = string(endDateBuffer) + " " + string(endTimeBuffer);
+                        strptime(endDateTime.c_str(), "%Y-%m-%d %H:%M", &endTm);
+                        endTime = mktime(&endTm);
+                    }
+
+                    for (auto it = selectedSensor->sensorsValues.rbegin(); it != selectedSensor->sensorsValues.rend(); ++it) {
+                        struct tm valueTm = {0};
+                        strptime(it->data.c_str(), "%Y-%m-%d %H:%M", &valueTm);
+                        time_t valueTime = mktime(&valueTm);
+
+
+                        if ((startTime == 0) || (valueTime >= startTime) && (endTime == 0) || (valueTime <= endTime)) {
+                            dates.push_back(counter++);
+                            values.push_back(it->value);
+                        }
+                    }
+
+                    ImPlot::PlotLine("Sensor Values", dates.data(), values.data(), dates.size());
+
+                    ImPlot::EndPlot();
+                }
+                ImGui::EndChild();
+
+
+                }
+
+
+
+            }
         ImGui::End();
+        }
+
+
     }
-}
+
 
 
 void CustomImGui::FetchStationSensors(const int stationId) {
@@ -266,4 +423,16 @@ void CustomImGui::FetchStationSensors(const int stationId) {
     if (!sensorsJsonStr.empty()) SensorsData::ParseSensorData(sensorsJsonStr);
 
 
+}
+
+void CustomImGui::FetchSensorValues(const int sensorId) {
+    for (auto& sensor : SensorsData::sensors) {
+        sensor.sensorsValues.clear();
+    }
+
+    const string valuesUrl = "https://api.gios.gov.pl/pjp-api/rest/data/getData/" + to_string(sensorId);
+
+    const string valuesOfSensor = StationData::FetchStations(valuesUrl);
+
+    if (!valuesOfSensor.empty()) SensorsData::ParseSensorValues(valuesOfSensor);
 }

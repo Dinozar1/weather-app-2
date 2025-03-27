@@ -27,3 +27,6 @@ target_link_libraries(weather_app_2 PRIVATE nlohmann_json::nlohmann_json)
 
 find_package(CURL CONFIG REQUIRED)
 target_link_libraries(weather_app_2 PRIVATE CURL::libcurl)
+
+find_package(implot CONFIG REQUIRED)
+target_link_libraries(weather_app_2 PRIVATE implot::implot)
