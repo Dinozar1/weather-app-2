@@ -6,6 +6,12 @@
 #include <implot.h>
 #include "implot.h"
 #include "implot_internal.h"
+#include <fstream>
+#include <nlohmann/json.hpp>
+
+using json = nlohmann::json;
+using namespace std;
+using namespace std::filesystem;
 
 
 void UseImGui::Init(GLFWwindow* window, const char* glsl_version) {
@@ -285,6 +291,23 @@ void CustomImGui::ShowStationSensorsWindow() {
             double average = 0;
             int valueCount = 0;
 
+            struct dataBaseFormat {
+                string stationName;
+                string cityName;
+                int stationId;
+                int sensorId;
+                string paramName;
+                string paramFormula;
+                vector<SensorsData::SensorValue> sensorsValues;
+            };
+
+            dataBaseFormat dataFormat(selectedStation->stationName,
+                selectedStation->cityName,
+                selectedStation->id,
+                selectedSensor->id,
+                selectedSensor->paramName,
+                selectedSensor->paramFormula);
+
             ImGui::Text("Start Date (YYYY-MM-DD):");
             ImGui::InputText("##StartDate", startDateBuffer, IM_ARRAYSIZE(startDateBuffer));
 
@@ -373,6 +396,9 @@ void CustomImGui::ShowStationSensorsWindow() {
                         average += value.value;
                         valueCount++;
 
+                        SensorsData::SensorValue values(value.data, value.value);
+                        dataFormat.sensorsValues.push_back(values);
+
                         ImGui::TableNextRow();
                         ImGui::TableNextColumn();
                         ImGui::Text("%s", value.data.c_str());
@@ -385,6 +411,8 @@ void CustomImGui::ShowStationSensorsWindow() {
 
 
             }
+
+
 
             if (showSensorsValueBox && selectedSensor) {
                 ImGui::SameLine();
@@ -446,6 +474,50 @@ void CustomImGui::ShowStationSensorsWindow() {
                 else ImGui::Text("The trend is upward");
             }
 
+            if (ImGui::Button("Save to Local Database (JSON)")) {
+                json record = {
+                    {"stationName", dataFormat.stationName},
+                    {"cityName", dataFormat.cityName},
+                    {"stationId", dataFormat.stationId},
+                    {"sensorId", dataFormat.sensorId},
+                    {"paramName", dataFormat.paramName},
+                    {"paramFormula", dataFormat.paramFormula},
+                    {"sensorValues", json::array()}
+                };
+
+                for (const auto& value : dataFormat.sensorsValues) {
+                    record["sensorValues"].push_back({
+                        {"date", value.data},
+                        {"value", value.value}
+                    });
+                }
+
+                path dataBasePath = "../LocalDataBase.json";
+
+
+                json database;
+
+                // If file exist save data to database variable
+                if (exists(dataBasePath)) {
+                    // Read existing data
+                    ifstream file(dataBasePath);
+                    file >> database;
+                    file.close();
+                }
+
+                // if it's empty add a empty array
+                if (database.is_null()) {
+                    database = json::array();
+                }
+
+                //add a new record
+                database.push_back(record);
+
+                ofstream outFile(dataBasePath);
+                outFile << std::setw(4) << database << std::endl;
+                outFile.close();
+
+            }
 
             }
         ImGui::End();
