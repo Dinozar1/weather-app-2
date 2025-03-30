@@ -14,18 +14,6 @@
 using namespace nlohmann;
 using namespace std;
 
-/**
- * @brief Calculates the distance between two points on Earth
- * @details Uses the Haversine formula to calculate the shortest distance over
- *          the Earth surface between two points specified by their latitude
- *          and longitude.
- *
- * @param lat1 Latitude of the first point in degrees
- * @param lon1 Longitude of the first point in degrees
- * @param lat2 Latitude of the second point in degrees
- * @param lon2 Longitude of the second point in degrees
- * @return double Distance between the two points in kilometers
- */
 
 double StationData::CalculateDistance(double lat1, double lon1, double lat2, double lon2) {
     //https://www.geeksforgeeks.org/haversine-formula-to-find-distance-between-two-points-on-a-sphere/
@@ -45,16 +33,6 @@ double StationData::CalculateDistance(double lat1, double lon1, double lat2, dou
 
     return rad * 2 * asin(sqrt(a));
 }
-
-/**
- * @brief Converts a street address to geographic coordinates
- * @details Uses the OpenStreetMap Nominatim API to geocode a given address
- *          string into latitude and longitude coordinates.
- *
- * @param address The address string to geocode
- * @return StationData::GeoCoordinates A structure containing latitude, longitude,
- *         and a flag indicating whether the geocoding was successful
- */
 
 StationData::GeoCoordinates StationData::GeocodeAddress(const string &address) {
     GeoCoordinates coords; // Default constructor sets valid=false

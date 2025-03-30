@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>weather-app-2: /home/szymon/CLionProjects/weather-app-2/api Directory Reference</title>
+<title>weather-app-2: /home/szymon/CLionProjects/weather-app-2/UseImGui.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -76,7 +76,7 @@ $(function() { codefold.init(0); });
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('dir_0188a3e6da905bc60aceb35bf790b8c9.html',''); initResizable(true); });
+$(function(){initNavTree('UseImGui_8cpp.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -102,28 +102,38 @@ $(function(){initNavTree('dir_0188a3e6da905bc60aceb35bf790b8c9.html',''); initRe
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">api Directory Reference</div></div>
+  <div class="summary">
+<a href="#typedef-members">Typedefs</a>  </div>
+  <div class="headertitle"><div class="title">/home/szymon/CLionProjects/weather-app-2/UseImGui.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="files" name="files"></a>
-Files</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="SensorsData_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="SensorsData_8h.html">SensorsData.h</a></td></tr>
-<tr class="memdesc:SensorsData_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manages sensor data. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="StationData_8cpp.html">StationData.cpp</a></td></tr>
-<tr class="memdesc:StationData_8cpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of the <a class="el" href="classStationData.html" title="Provides class for storing Station information and geolocation features.">StationData</a> class for geocoding and distance calculations of stations. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="StationData_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="StationData_8h.html">StationData.h</a></td></tr>
-<tr class="memdesc:StationData_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manages station data. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+
+<p>Implementation of ImGui configuration and GUI for an entire app.  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="UseImGui_8h_source.html">UseImGui.h</a>&quot;</code><br />
+<code>#include &lt;bits/ranges_algo.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="StationData_8h_source.html">./api/StationData.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="SensorsData_8h_source.html">./api/SensorsData.h</a>&quot;</code><br />
+<code>#include &lt;implot.h&gt;</code><br />
+<code>#include &quot;implot_internal.h&quot;</code><br />
+<code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;nlohmann/json.hpp&gt;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:ab701e3ac61a85b337ec5c1abaad6742d" id="r_ab701e3ac61a85b337ec5c1abaad6742d"><td class="memItemLeft" align="right" valign="top"><a id="ab701e3ac61a85b337ec5c1abaad6742d" name="ab701e3ac61a85b337ec5c1abaad6742d"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>json</b> = nlohmann::json</td></tr>
+<tr class="separator:ab701e3ac61a85b337ec5c1abaad6742d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implementation of ImGui configuration and GUI for an entire app. </p>
+<p>Contains configuration of ImGui and a <a class="el" href="classCustomImGui.html" title="Custom ImGui implementation for air quality station monitoring.">CustomImGui</a> with a GUI written mostly in Update method </p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_0188a3e6da905bc60aceb35bf790b8c9.html">api</a></li>
+    <li class="navelem"><a class="el" href="UseImGui_8cpp.html">UseImGui.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

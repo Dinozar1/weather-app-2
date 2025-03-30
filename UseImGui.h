@@ -47,7 +47,7 @@ public:
 
     /**
      * @brief Updates the ImGui UI elements
-     * @details Virtual method to be implemented by childer classes
+     * @details Virtual method to be implemented by childen classes
      */
     virtual void Update();
 

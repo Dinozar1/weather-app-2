@@ -55,6 +55,22 @@ Parses JSON string containing sensor data.
 \begin{DoxyReturn}{Returns}
 true if parsing was successful, false otherwise 
 \end{DoxyReturn}
+Example JSON format\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{[}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}id"{}}:\ 3486,}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}stationId"{}}:\ 515,}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}param"{}}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{stringliteral}{"{}paramName"{}}:\ \textcolor{stringliteral}{"{}benzen"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{stringliteral}{"{}paramFormula"{}}:\ \textcolor{stringliteral}{"{}C6H6"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{stringliteral}{"{}paramCode"{}}:\ \textcolor{stringliteral}{"{}C6H6"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{stringliteral}{"{}idParam"{}}:\ 10}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{]}
+
+\end{DoxyCode}
 \Hypertarget{classSensorsData_a0cd64854db383cd18a0325b63bb58e15}\index{SensorsData@{SensorsData}!ParseSensorValues@{ParseSensorValues}}
 \index{ParseSensorValues@{ParseSensorValues}!SensorsData@{SensorsData}}
 \doxysubsubsection{\texorpdfstring{ParseSensorValues()}{ParseSensorValues()}}
@@ -73,7 +89,11 @@ Parses JSON string containing sensor measurement values.
 \begin{DoxyReturn}{Returns}
 true if parsing was successful, false otherwise 
 \end{DoxyReturn}
-
+\begin{DoxyVerb}@brief Example JSON format:
+@code
+{
+\end{DoxyVerb}
+ "{}key"{}\+: "{}\+PM10"{}, "{}values"{}\+: \mbox{[} \{ "{}date"{}\+: "{}2025-\/03-\/27 12\+:00\+:00"{}, "{}value"{}\+: 7.\+0 \}, \{ "{}date"{}\+: "{}2025-\/03-\/27 11\+:00\+:00"{}, "{}value"{}\+: 6.\+9 \} \mbox{]} \} 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

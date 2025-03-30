@@ -20,7 +20,7 @@ struct \mbox{\hyperlink{structStationData_1_1Station}{Station}}
 \begin{DoxyCompactItemize}
 \item 
 static string \mbox{\hyperlink{classStationData_af369b3a156f6a0a91f7f298585cc1722}{Fetch\+Stations}} (const string \&uri)
-\begin{DoxyCompactList}\small\item\em Fetches station data from the specified URI. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Fetches data from the specified URI. \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{classStationData_a4223cd881cdde9f1b88152f09bcea605}{Parse\+Stations}} (const string \&json\+Str)
 \begin{DoxyCompactList}\small\item\em Parses JSON string containing station data. \end{DoxyCompactList}\item 
 static size\+\_\+t \mbox{\hyperlink{classStationData_a9264ec34d1a92b6429039fe3389dba9e}{Write\+Callback}} (void \texorpdfstring{$\ast$}{*}contents, size\+\_\+t size, size\+\_\+t nmemb, void \texorpdfstring{$\ast$}{*}user)
@@ -80,11 +80,11 @@ string Station\+Data\+::\+Fetch\+Stations (\begin{DoxyParamCaption}\item[{const 
 
 
 
-Fetches station data from the specified URI. 
+Fetches data from the specified URI. 
 
-
+Uses libcurl to make an HTTP request to the given URI and returns the response as a string 
 \begin{DoxyParams}{Parameters}
-{\em uri} & The URI endpoint to fetch data from \\
+{\em uri} & The URI string endpoint to fetch data from \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -123,6 +123,26 @@ Parses JSON string containing station data.
 {\em json\+Str} & from the return of Fetch\+Station method \\
 \hline
 \end{DoxyParams}
+Example JSON object structure\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}id"{}}:\ 741,}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}stationName"{}}:\ \textcolor{stringliteral}{"{}Malbork,\ ul.\ Mickiewicza"{}},}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}gegrLat"{}}:\ \textcolor{stringliteral}{"{}54.031247"{}},}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}gegrLon"{}}:\ \textcolor{stringliteral}{"{}19.032899"{}},}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}city"{}}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}id"{}}:\ 527,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}name"{}}:\ \textcolor{stringliteral}{"{}Malbork"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}commune"{}}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}communeName"{}}:\ \textcolor{stringliteral}{"{}Malbork"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}districtName"{}}:\ \textcolor{stringliteral}{"{}malborski"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}provinceName"{}}:\ \textcolor{stringliteral}{"{}POMORSKIE"{}}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}addressStreet"{}}:\ \textcolor{stringliteral}{"{}ul.\ Mickiewicza"{}}\ \textcolor{comment}{//\ might\ be\ null!}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
 \Hypertarget{classStationData_a9264ec34d1a92b6429039fe3389dba9e}\index{StationData@{StationData}!WriteCallback@{WriteCallback}}
 \index{WriteCallback@{WriteCallback}!StationData@{StationData}}
 \doxysubsubsection{\texorpdfstring{WriteCallback()}{WriteCallback()}}
@@ -133,7 +153,11 @@ size\+\_\+t Station\+Data\+::\+Write\+Callback (\begin{DoxyParamCaption}\item[{v
 
 Callback function for libcurl to handle received data. 
 
-
+When libcurl makes an HTTP request, data isn\textquotesingle{}t received all at once. It comes in chunks. This callback function\+:
+\begin{DoxyItemize}
+\item Collects these chunks
+\item Stores them in a single string
+\item Allows processing the entire response 
 \begin{DoxyParams}{Parameters}
 {\em contents} & Pointer to the received data \\
 \hline
@@ -141,13 +165,14 @@ Callback function for libcurl to handle received data.
 \hline
 {\em nmemb} & Number of data elements \\
 \hline
-{\em user} & Pointer to user data (string buffer) \\
+{\em userp} & Pointer to string buffer \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Total size of processed data 
 \end{DoxyReturn}
 
+\end{DoxyItemize}
 
 \doxysubsection{Friends And Related Symbol Documentation}
 \Hypertarget{classStationData_a26561d949023bcc6a121413da0d9966e}\index{StationData@{StationData}!SensorData@{SensorData}}
@@ -162,4 +187,4 @@ The documentation for this class was generated from the following files\+:\begin
 \item 
 /home/szymon/\+CLion\+Projects/weather-\/app-\/2/api/\mbox{\hyperlink{StationData_8h}{Station\+Data.\+h}}\item 
 /home/szymon/\+CLion\+Projects/weather-\/app-\/2/api/Geo\+Location.\+cpp\item 
-/home/szymon/\+CLion\+Projects/weather-\/app-\/2/api/Station\+Data.\+cpp\end{DoxyCompactItemize}
+/home/szymon/\+CLion\+Projects/weather-\/app-\/2/api/\mbox{\hyperlink{StationData_8cpp}{Station\+Data.\+cpp}}\end{DoxyCompactItemize}

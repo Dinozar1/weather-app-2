@@ -25,13 +25,6 @@ void curlCleanup(CURL *curl) {
 vector<StationData::Station> StationData::stations;
 
 
-/**
- * @brief Fetches data from the specified URI
- * @details Uses libcurl to make an HTTP request to the given URI
- *          and returns the response as a string
- * @param uri The URI string endpoint to fetch data from
- * @return JSON string containing station data or empty string on failure
- */
 string StationData::FetchStations(const string& uri) {
     string readBuffer;
 
@@ -55,19 +48,6 @@ string StationData::FetchStations(const string& uri) {
     return "";
 }
 
-/**
- * @brief Callback function for libcurl to handle received data
- * @details When libcurl makes an HTTP request, data isn't received all at once.
- *          It comes in chunks. This callback function:
- *          - Collects these chunks
- *          - Stores them in a single string
- *          - Allows processing the entire response
- * @param contents Pointer to the received data
- * @param size Size of each data element
- * @param nmemb Number of data elements
- * @param userp Pointer to string buffer
- * @return Total size of processed data
- */
 
 size_t StationData::WriteCallback(void *contents, const size_t size, const size_t nmemb, void *userp) {
 
@@ -84,13 +64,6 @@ size_t StationData::WriteCallback(void *contents, const size_t size, const size_
     return totalSize;
 }
 
-
-/**
- * @brief Parses JSON string containing station data
- * @details Processes the JSON response from the fetch method and populates
- *          the stations vector with Station objects
- * @param jsonStr The JSON string to parse
- */
 void StationData::ParseStations(const string& jsonStr) {
     try {
         //Parse string

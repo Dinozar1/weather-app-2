@@ -1,3 +1,9 @@
+/**
+* @file UseImGui.cpp
+ * @brief Implementation of ImGui configuration and GUI for an entire app
+ * @details Contains configuration of ImGui and a CustomImGui with a GUI written mostly in Update method
+ */
+
 #include "UseImGui.h"
 #include <bits/ranges_algo.h>
 #include "./api/StationData.h"
@@ -12,7 +18,6 @@
 using json = nlohmann::json;
 using namespace std;
 using namespace std::filesystem;
-
 
 void UseImGui::Init(GLFWwindow* window, const char* glsl_version) {
     IMGUI_CHECKVERSION();
@@ -525,8 +530,6 @@ void CustomImGui::ShowStationSensorsWindow() {
 
 
     }
-
-
 
 void CustomImGui::FetchStationSensors(const int stationId) {
     SensorsData::sensors.clear();

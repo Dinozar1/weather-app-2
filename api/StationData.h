@@ -55,8 +55,10 @@ public:
     static vector<Station> stations;
 
     /**
-     * @brief Fetches station data from the specified URI
-     * @param uri The URI endpoint to fetch data from
+     * @brief Fetches data from the specified URI
+     * @details Uses libcurl to make an HTTP request to the given URI
+     *          and returns the response as a string
+     * @param uri The URI string endpoint to fetch data from
      * @return JSON string containing station data or empty string on failure
      */
     static string FetchStations(const string& uri);
@@ -69,10 +71,15 @@ public:
 
     /**
      * @brief Callback function for libcurl to handle received data
+     * @details When libcurl makes an HTTP request, data isn't received all at once.
+     *          It comes in chunks. This callback function:
+     *          - Collects these chunks
+     *          - Stores them in a single string
+     *          - Allows processing the entire response
      * @param contents Pointer to the received data
      * @param size Size of each data element
      * @param nmemb Number of data elements
-     * @param user Pointer to user data (string buffer)
+     * @param userp Pointer to string buffer
      * @return Total size of processed data
      */
     static size_t WriteCallback(void *contents, size_t size, size_t nmemb, void *user);

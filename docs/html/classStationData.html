@@ -129,7 +129,7 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:af369b3a156f6a0a91f7f298585cc1722" id="r_af369b3a156f6a0a91f7f298585cc1722"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af369b3a156f6a0a91f7f298585cc1722">FetchStations</a> (const string &amp;uri)</td></tr>
-<tr class="memdesc:af369b3a156f6a0a91f7f298585cc1722"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches station data from the specified URI.  <br /></td></tr>
+<tr class="memdesc:af369b3a156f6a0a91f7f298585cc1722"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches data from the specified URI.  <br /></td></tr>
 <tr class="separator:af369b3a156f6a0a91f7f298585cc1722"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4223cd881cdde9f1b88152f09bcea605" id="r_a4223cd881cdde9f1b88152f09bcea605"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4223cd881cdde9f1b88152f09bcea605">ParseStations</a> (const string &amp;jsonStr)</td></tr>
 <tr class="memdesc:a4223cd881cdde9f1b88152f09bcea605"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses JSON string containing station data.  <br /></td></tr>
@@ -234,10 +234,10 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Fetches station data from the specified URI. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Fetches data from the specified URI. </p>
+<p>Uses libcurl to make an HTTP request to the given URI and returns the response as a string </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">uri</td><td>The URI endpoint to fetch data from </td></tr>
+    <tr><td class="paramname">uri</td><td>The URI string endpoint to fetch data from </td></tr>
   </table>
   </dd>
 </dl>
@@ -309,7 +309,23 @@ Friends</h2></td></tr>
   </table>
   </dd>
 </dl>
-
+<p>Example JSON object structure: </p><div class="fragment"><div class="line">{</div>
+<div class="line">    <span class="stringliteral">&quot;id&quot;</span>: 741,</div>
+<div class="line">    <span class="stringliteral">&quot;stationName&quot;</span>: <span class="stringliteral">&quot;Malbork, ul. Mickiewicza&quot;</span>,</div>
+<div class="line">    <span class="stringliteral">&quot;gegrLat&quot;</span>: <span class="stringliteral">&quot;54.031247&quot;</span>,</div>
+<div class="line">    <span class="stringliteral">&quot;gegrLon&quot;</span>: <span class="stringliteral">&quot;19.032899&quot;</span>,</div>
+<div class="line">    <span class="stringliteral">&quot;city&quot;</span>: {</div>
+<div class="line">        <span class="stringliteral">&quot;id&quot;</span>: 527,</div>
+<div class="line">        <span class="stringliteral">&quot;name&quot;</span>: <span class="stringliteral">&quot;Malbork&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;commune&quot;</span>: {</div>
+<div class="line">            <span class="stringliteral">&quot;communeName&quot;</span>: <span class="stringliteral">&quot;Malbork&quot;</span>,</div>
+<div class="line">            <span class="stringliteral">&quot;districtName&quot;</span>: <span class="stringliteral">&quot;malborski&quot;</span>,</div>
+<div class="line">            <span class="stringliteral">&quot;provinceName&quot;</span>: <span class="stringliteral">&quot;POMORSKIE&quot;</span></div>
+<div class="line">        }</div>
+<div class="line">    },</div>
+<div class="line">    <span class="stringliteral">&quot;addressStreet&quot;</span>: <span class="stringliteral">&quot;ul. Mickiewicza&quot;</span> <span class="comment">// might be null!</span></div>
+<div class="line">}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a9264ec34d1a92b6429039fe3389dba9e" name="a9264ec34d1a92b6429039fe3389dba9e"></a>
@@ -350,16 +366,21 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Callback function for libcurl to handle received data. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>When libcurl makes an HTTP request, data isn't received all at once. It comes in chunks. This callback function:</p><ul>
+<li>Collects these chunks</li>
+<li>Stores them in a single string</li>
+<li>Allows processing the entire response <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">contents</td><td>Pointer to the received data </td></tr>
     <tr><td class="paramname">size</td><td>Size of each data element </td></tr>
     <tr><td class="paramname">nmemb</td><td>Number of data elements </td></tr>
-    <tr><td class="paramname">user</td><td>Pointer to user data (string buffer) </td></tr>
+    <tr><td class="paramname">userp</td><td>Pointer to string buffer </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Total size of processed data </dd></dl>
+</li>
+</ul>
 
 </div>
 </div>
@@ -390,7 +411,7 @@ Friends</h2></td></tr>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/szymon/CLionProjects/weather-app-2/api/<a class="el" href="StationData_8h_source.html">StationData.h</a></li>
 <li>/home/szymon/CLionProjects/weather-app-2/api/<b>GeoLocation.cpp</b></li>
-<li>/home/szymon/CLionProjects/weather-app-2/api/<b>StationData.cpp</b></li>
+<li>/home/szymon/CLionProjects/weather-app-2/api/<a class="el" href="StationData_8cpp.html">StationData.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

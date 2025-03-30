@@ -1,0 +1,43 @@
+\doxysection{/home/szymon/\+CLion\+Projects/weather-\/app-\/2/api/\+Station\+Data.cpp File Reference}
+\hypertarget{StationData_8cpp}{}\label{StationData_8cpp}\index{/home/szymon/CLionProjects/weather-\/app-\/2/api/StationData.cpp@{/home/szymon/CLionProjects/weather-\/app-\/2/api/StationData.cpp}}
+
+
+Implementation of the \doxylink{classStationData}{Station\+Data} class for geocoding and distance calculations of stations.  
+
+
+{\ttfamily \#include "{}Station\+Data.\+h"{}}\newline
+{\ttfamily \#include $<$curl/curl.\+h$>$}\newline
+{\ttfamily \#include $<$nlohmann/json.\+hpp$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{StationData_8cpp_ad083cbb1b41f461aa0f6e852d7ae89ac}{curl\+Cleanup}} (CURL \texorpdfstring{$\ast$}{*}curl)
+\begin{DoxyCompactList}\small\item\em Helper function to clean up curl resources. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of the \doxylink{classStationData}{Station\+Data} class for geocoding and distance calculations of stations. 
+
+Implementation of \doxylink{classStationData}{Station\+Data} class methods.
+
+This file contains source of geolocations methods of \doxylink{classStationData}{Station\+Data} class, it provides distance calculator between two objects and method that provides geolocation of a address
+
+Contains functions for fetching, parsing, and processing station data. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{StationData_8cpp_ad083cbb1b41f461aa0f6e852d7ae89ac}\index{StationData.cpp@{StationData.cpp}!curlCleanup@{curlCleanup}}
+\index{curlCleanup@{curlCleanup}!StationData.cpp@{StationData.cpp}}
+\doxysubsubsection{\texorpdfstring{curlCleanup()}{curlCleanup()}}
+{\footnotesize\ttfamily \label{StationData_8cpp_ad083cbb1b41f461aa0f6e852d7ae89ac} 
+void curl\+Cleanup (\begin{DoxyParamCaption}\item[{CURL \texorpdfstring{$\ast$}{*}}]{curl}{}\end{DoxyParamCaption})}
+
+
+
+Helper function to clean up curl resources. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em curl} & Pointer to the curl handle to clean up \\
+\hline
+\end{DoxyParams}
