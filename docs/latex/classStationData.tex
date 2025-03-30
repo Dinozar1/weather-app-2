@@ -1,43 +1,162 @@
 \doxysection{Station\+Data Class Reference}
 \hypertarget{classStationData}{}\label{classStationData}\index{StationData@{StationData}}
+
+
+Provides class for storing \doxylink{structStationData_1_1Station}{Station} information and geolocation features.  
+
+
+
+
+{\ttfamily \#include $<$Station\+Data.\+h$>$}
+
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structStationData_1_1GeoCoordinates}{Geo\+Coordinates}}
-\item 
+\begin{DoxyCompactList}\small\item\em Represents a geographical position of the station. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structStationData_1_1Station}{Station}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Represents a \doxylink{structStationData_1_1Station}{Station} in GIOS api system. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classStationData_af369b3a156f6a0a91f7f298585cc1722}\label{classStationData_af369b3a156f6a0a91f7f298585cc1722} 
-static string {\bfseries Fetch\+Stations} (const string \&uri)
-\item 
-\Hypertarget{classStationData_a4223cd881cdde9f1b88152f09bcea605}\label{classStationData_a4223cd881cdde9f1b88152f09bcea605} 
-static void {\bfseries Parse\+Stations} (const string \&json\+Str)
-\item 
-\Hypertarget{classStationData_a9264ec34d1a92b6429039fe3389dba9e}\label{classStationData_a9264ec34d1a92b6429039fe3389dba9e} 
-static size\+\_\+t {\bfseries Write\+Callback} (void \texorpdfstring{$\ast$}{*}contents, size\+\_\+t size, size\+\_\+t nmemb, void \texorpdfstring{$\ast$}{*}user)
-\item 
-\Hypertarget{classStationData_a06a405b5c450c2fa1f3669bd3f1342b6}\label{classStationData_a06a405b5c450c2fa1f3669bd3f1342b6} 
-static double {\bfseries Calculate\+Distance} (double lat1, double lon1, double lat2, double lon2)
-\item 
-\Hypertarget{classStationData_a6fb1cbf8328a05bea270587b254bfb2d}\label{classStationData_a6fb1cbf8328a05bea270587b254bfb2d} 
-static \mbox{\hyperlink{structStationData_1_1GeoCoordinates}{Geo\+Coordinates}} {\bfseries Geocode\+Address} (const std\+::string \&address)
-\end{DoxyCompactItemize}
+static string \mbox{\hyperlink{classStationData_af369b3a156f6a0a91f7f298585cc1722}{Fetch\+Stations}} (const string \&uri)
+\begin{DoxyCompactList}\small\item\em Fetches station data from the specified URI. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classStationData_a4223cd881cdde9f1b88152f09bcea605}{Parse\+Stations}} (const string \&json\+Str)
+\begin{DoxyCompactList}\small\item\em Parses JSON string containing station data. \end{DoxyCompactList}\item 
+static size\+\_\+t \mbox{\hyperlink{classStationData_a9264ec34d1a92b6429039fe3389dba9e}{Write\+Callback}} (void \texorpdfstring{$\ast$}{*}contents, size\+\_\+t size, size\+\_\+t nmemb, void \texorpdfstring{$\ast$}{*}user)
+\begin{DoxyCompactList}\small\item\em Callback function for libcurl to handle received data. \end{DoxyCompactList}\item 
+static double \mbox{\hyperlink{classStationData_a06a405b5c450c2fa1f3669bd3f1342b6}{Calculate\+Distance}} (double lat1, double lon1, double lat2, double lon2)
+\begin{DoxyCompactList}\small\item\em Calculates the distance between two geographical points. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{structStationData_1_1GeoCoordinates}{Geo\+Coordinates}} \mbox{\hyperlink{classStationData_a6fb1cbf8328a05bea270587b254bfb2d}{Geocode\+Address}} (const std\+::string \&address)
+\begin{DoxyCompactList}\small\item\em Converts an address string to geographical coordinates using openstrees api. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \Hypertarget{classStationData_a4fa033a2e80650d718a76de64dea9bd7}\label{classStationData_a4fa033a2e80650d718a76de64dea9bd7} 
 static vector$<$ \mbox{\hyperlink{structStationData_1_1Station}{Station}} $>$ {\bfseries stations}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Collection of all stations. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classStationData_a26561d949023bcc6a121413da0d9966e}\label{classStationData_a26561d949023bcc6a121413da0d9966e} 
-class {\bfseries Sensor\+Data}
+class \mbox{\hyperlink{classStationData_a26561d949023bcc6a121413da0d9966e}{Sensor\+Data}}
 \end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Provides class for storing \doxylink{structStationData_1_1Station}{Station} information and geolocation features. 
+
+Provides struct for \doxylink{structStationData_1_1Station}{Station} data and struct for geolocation data, provides methods for fetching api and parsing data to json format and methods for geolocation purposes 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classStationData_a06a405b5c450c2fa1f3669bd3f1342b6}\index{StationData@{StationData}!CalculateDistance@{CalculateDistance}}
+\index{CalculateDistance@{CalculateDistance}!StationData@{StationData}}
+\doxysubsubsection{\texorpdfstring{CalculateDistance()}{CalculateDistance()}}
+{\footnotesize\ttfamily \label{classStationData_a06a405b5c450c2fa1f3669bd3f1342b6} 
+double Station\+Data\+::\+Calculate\+Distance (\begin{DoxyParamCaption}\item[{double}]{lat1}{, }\item[{double}]{lon1}{, }\item[{double}]{lat2}{, }\item[{double}]{lon2}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Calculates the distance between two geographical points. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lat1} & Latitude of the first point \\
+\hline
+{\em lon1} & Longitude of the first point \\
+\hline
+{\em lat2} & Latitude of the second point \\
+\hline
+{\em lon2} & Longitude of the second point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Distance in kilometers 
+\end{DoxyReturn}
+\Hypertarget{classStationData_af369b3a156f6a0a91f7f298585cc1722}\index{StationData@{StationData}!FetchStations@{FetchStations}}
+\index{FetchStations@{FetchStations}!StationData@{StationData}}
+\doxysubsubsection{\texorpdfstring{FetchStations()}{FetchStations()}}
+{\footnotesize\ttfamily \label{classStationData_af369b3a156f6a0a91f7f298585cc1722} 
+string Station\+Data\+::\+Fetch\+Stations (\begin{DoxyParamCaption}\item[{const string \&}]{uri}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Fetches station data from the specified URI. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em uri} & The URI endpoint to fetch data from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+JSON string containing station data or empty string on failure 
+\end{DoxyReturn}
+\Hypertarget{classStationData_a6fb1cbf8328a05bea270587b254bfb2d}\index{StationData@{StationData}!GeocodeAddress@{GeocodeAddress}}
+\index{GeocodeAddress@{GeocodeAddress}!StationData@{StationData}}
+\doxysubsubsection{\texorpdfstring{GeocodeAddress()}{GeocodeAddress()}}
+{\footnotesize\ttfamily \label{classStationData_a6fb1cbf8328a05bea270587b254bfb2d} 
+\mbox{\hyperlink{structStationData_1_1GeoCoordinates}{Station\+Data\+::\+Geo\+Coordinates}} Station\+Data\+::\+Geocode\+Address (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{address}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Converts an address string to geographical coordinates using openstrees api. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & The address from input \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{structStationData_1_1GeoCoordinates}{Geo\+Coordinates} structure containing latitude, longitude and validation 
+\end{DoxyReturn}
+\Hypertarget{classStationData_a4223cd881cdde9f1b88152f09bcea605}\index{StationData@{StationData}!ParseStations@{ParseStations}}
+\index{ParseStations@{ParseStations}!StationData@{StationData}}
+\doxysubsubsection{\texorpdfstring{ParseStations()}{ParseStations()}}
+{\footnotesize\ttfamily \label{classStationData_a4223cd881cdde9f1b88152f09bcea605} 
+void Station\+Data\+::\+Parse\+Stations (\begin{DoxyParamCaption}\item[{const string \&}]{json\+Str}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Parses JSON string containing station data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em json\+Str} & from the return of Fetch\+Station method \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classStationData_a9264ec34d1a92b6429039fe3389dba9e}\index{StationData@{StationData}!WriteCallback@{WriteCallback}}
+\index{WriteCallback@{WriteCallback}!StationData@{StationData}}
+\doxysubsubsection{\texorpdfstring{WriteCallback()}{WriteCallback()}}
+{\footnotesize\ttfamily \label{classStationData_a9264ec34d1a92b6429039fe3389dba9e} 
+size\+\_\+t Station\+Data\+::\+Write\+Callback (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{contents}{, }\item[{size\+\_\+t}]{size}{, }\item[{size\+\_\+t}]{nmemb}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{user}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Callback function for libcurl to handle received data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em contents} & Pointer to the received data \\
+\hline
+{\em size} & Size of each data element \\
+\hline
+{\em nmemb} & Number of data elements \\
+\hline
+{\em user} & Pointer to user data (string buffer) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Total size of processed data 
+\end{DoxyReturn}
+
+
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{classStationData_a26561d949023bcc6a121413da0d9966e}\index{StationData@{StationData}!SensorData@{SensorData}}
+\index{SensorData@{SensorData}!StationData@{StationData}}
+\doxysubsubsection{\texorpdfstring{SensorData}{SensorData}}
+{\footnotesize\ttfamily \label{classStationData_a26561d949023bcc6a121413da0d9966e} 
+friend class Sensor\+Data\hspace{0.3cm}{\ttfamily [friend]}}
+
+Allows Sensor\+Data class to access private members 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

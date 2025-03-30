@@ -1,5 +1,14 @@
 \doxysection{Use\+Im\+Gui Class Reference}
 \hypertarget{classUseImGui}{}\label{classUseImGui}\index{UseImGui@{UseImGui}}
+
+
+Base class providing Im\+Gui initialization and lifecycle management.  
+
+
+
+
+{\ttfamily \#include $<$Use\+Im\+Gui.\+h$>$}
+
 Inheritance diagram for Use\+Im\+Gui\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,27 +18,94 @@ Inheritance diagram for Use\+Im\+Gui\+:\begin{figure}[H]
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classUseImGui_a251657271f6dc06da028d0fb9e9380f3}\label{classUseImGui_a251657271f6dc06da028d0fb9e9380f3} 
-virtual void {\bfseries Update} ()
-\end{DoxyCompactItemize}
+\Hypertarget{classUseImGui_ab01f36eeef25a3031c7e44dfded5e48f}\label{classUseImGui_ab01f36eeef25a3031c7e44dfded5e48f} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Use\+Im\+Gui} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor for proper inheritance. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classUseImGui_a251657271f6dc06da028d0fb9e9380f3}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Updates the Im\+Gui UI elements. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classUseImGui_add84697eb339f06fc4a0c4000ac93a6f}\label{classUseImGui_add84697eb339f06fc4a0c4000ac93a6f} 
-static void {\bfseries Init} (GLFWwindow \texorpdfstring{$\ast$}{*}window, const char \texorpdfstring{$\ast$}{*}glsl\+\_\+version)
-\item 
-\Hypertarget{classUseImGui_afdd1bcf8a243c3909f1741be360c64be}\label{classUseImGui_afdd1bcf8a243c3909f1741be360c64be} 
-static void {\bfseries New\+Frame} ()
-\item 
-\Hypertarget{classUseImGui_ac16007ac2fdb722f07033e4bdb100d3d}\label{classUseImGui_ac16007ac2fdb722f07033e4bdb100d3d} 
-static void {\bfseries Render} ()
-\item 
-\Hypertarget{classUseImGui_a17344082441a8968621d2a1014f02d8a}\label{classUseImGui_a17344082441a8968621d2a1014f02d8a} 
-static void {\bfseries Shutdown} ()
-\end{DoxyCompactItemize}
+static void \mbox{\hyperlink{classUseImGui_add84697eb339f06fc4a0c4000ac93a6f}{Init}} (GLFWwindow \texorpdfstring{$\ast$}{*}window, const char \texorpdfstring{$\ast$}{*}glsl\+\_\+version)
+\begin{DoxyCompactList}\small\item\em Initializes Im\+Gui with GLFW and Open\+GL. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classUseImGui_afdd1bcf8a243c3909f1741be360c64be}{New\+Frame}} ()
+\begin{DoxyCompactList}\small\item\em Begins a new Im\+Gui frame. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classUseImGui_ac16007ac2fdb722f07033e4bdb100d3d}{Render}} ()
+\begin{DoxyCompactList}\small\item\em Renders Im\+Gui elements to the screen. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classUseImGui_a17344082441a8968621d2a1014f02d8a}{Shutdown}} ()
+\begin{DoxyCompactList}\small\item\em Cleans up Im\+Gui resources. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base class providing Im\+Gui initialization and lifecycle management. 
+
+Handles the setup, frame management, rendering, and shutdown of Im\+Gui. Provides a virtual Update method for derived classes. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classUseImGui_add84697eb339f06fc4a0c4000ac93a6f}\index{UseImGui@{UseImGui}!Init@{Init}}
+\index{Init@{Init}!UseImGui@{UseImGui}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{classUseImGui_add84697eb339f06fc4a0c4000ac93a6f} 
+void Use\+Im\+Gui\+::\+Init (\begin{DoxyParamCaption}\item[{GLFWwindow \texorpdfstring{$\ast$}{*}}]{window}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{glsl\+\_\+version}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Initializes Im\+Gui with GLFW and Open\+GL. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Pointer to the GLFW window \\
+\hline
+{\em glsl\+\_\+version} & Open\+GL shader version string \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classUseImGui_afdd1bcf8a243c3909f1741be360c64be}\index{UseImGui@{UseImGui}!NewFrame@{NewFrame}}
+\index{NewFrame@{NewFrame}!UseImGui@{UseImGui}}
+\doxysubsubsection{\texorpdfstring{NewFrame()}{NewFrame()}}
+{\footnotesize\ttfamily \label{classUseImGui_afdd1bcf8a243c3909f1741be360c64be} 
+void Use\+Im\+Gui\+::\+New\+Frame (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Begins a new Im\+Gui frame. 
+
+Should be called at the beginning of each render loop iteration \Hypertarget{classUseImGui_ac16007ac2fdb722f07033e4bdb100d3d}\index{UseImGui@{UseImGui}!Render@{Render}}
+\index{Render@{Render}!UseImGui@{UseImGui}}
+\doxysubsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily \label{classUseImGui_ac16007ac2fdb722f07033e4bdb100d3d} 
+void Use\+Im\+Gui\+::\+Render (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Renders Im\+Gui elements to the screen. 
+
+Should be called after all UI elements are defined \Hypertarget{classUseImGui_a17344082441a8968621d2a1014f02d8a}\index{UseImGui@{UseImGui}!Shutdown@{Shutdown}}
+\index{Shutdown@{Shutdown}!UseImGui@{UseImGui}}
+\doxysubsubsection{\texorpdfstring{Shutdown()}{Shutdown()}}
+{\footnotesize\ttfamily \label{classUseImGui_a17344082441a8968621d2a1014f02d8a} 
+void Use\+Im\+Gui\+::\+Shutdown (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Cleans up Im\+Gui resources. 
+
+Should be called before application termination \Hypertarget{classUseImGui_a251657271f6dc06da028d0fb9e9380f3}\index{UseImGui@{UseImGui}!Update@{Update}}
+\index{Update@{Update}!UseImGui@{UseImGui}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{classUseImGui_a251657271f6dc06da028d0fb9e9380f3} 
+void Use\+Im\+Gui\+::\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Updates the Im\+Gui UI elements. 
+
+Virtual method to be implemented by childer classes 
+
+Reimplemented in \mbox{\hyperlink{classCustomImGui_a1b0f2c45b291963be11b58f535c9f3e1}{Custom\+Im\+Gui}}.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/home/szymon/\+CLion\+Projects/weather-\/app-\/2/Use\+Im\+Gui.\+h\item 
+/home/szymon/\+CLion\+Projects/weather-\/app-\/2/\mbox{\hyperlink{UseImGui_8h}{Use\+Im\+Gui.\+h}}\item 
 /home/szymon/\+CLion\+Projects/weather-\/app-\/2/Use\+Im\+Gui.\+cpp\end{DoxyCompactItemize}

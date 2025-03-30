@@ -1,30 +1,81 @@
 \doxysection{Sensors\+Data Class Reference}
 \hypertarget{classSensorsData}{}\label{classSensorsData}\index{SensorsData@{SensorsData}}
+
+
+Provides a class for storing data of the selected station.  
+
+
+
+
+{\ttfamily \#include $<$Sensors\+Data.\+h$>$}
+
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structSensorsData_1_1Sensor}{Sensor}}
-\item 
+\begin{DoxyCompactList}\small\item\em Represents an sensor. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structSensorsData_1_1SensorValue}{Sensor\+Value}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Represents a single measurement from a sensor. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classSensorsData_abf4553ff7699e7aedc27f085103e7268}\label{classSensorsData_abf4553ff7699e7aedc27f085103e7268} 
-static bool {\bfseries Parse\+Sensor\+Data} (const string \&json\+Str)
-\item 
-\Hypertarget{classSensorsData_a0cd64854db383cd18a0325b63bb58e15}\label{classSensorsData_a0cd64854db383cd18a0325b63bb58e15} 
-static bool {\bfseries Parse\+Sensor\+Values} (const string \&json\+Str)
-\end{DoxyCompactItemize}
+static bool \mbox{\hyperlink{classSensorsData_abf4553ff7699e7aedc27f085103e7268}{Parse\+Sensor\+Data}} (const string \&json\+Str)
+\begin{DoxyCompactList}\small\item\em Parses JSON string containing sensor data. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classSensorsData_a0cd64854db383cd18a0325b63bb58e15}{Parse\+Sensor\+Values}} (const string \&json\+Str)
+\begin{DoxyCompactList}\small\item\em Parses JSON string containing sensor measurement values. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \Hypertarget{classSensorsData_a7a5e88d48575a0a37a529f3ac961d8bc}\label{classSensorsData_a7a5e88d48575a0a37a529f3ac961d8bc} 
 static vector$<$ \mbox{\hyperlink{structSensorsData_1_1Sensor}{Sensor}} $>$ {\bfseries sensors}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Collection of all sensors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Provides a class for storing data of the selected station. 
+
+Provides structs and vectors representing GIOŚ api and parsing methods 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classSensorsData_abf4553ff7699e7aedc27f085103e7268}\index{SensorsData@{SensorsData}!ParseSensorData@{ParseSensorData}}
+\index{ParseSensorData@{ParseSensorData}!SensorsData@{SensorsData}}
+\doxysubsubsection{\texorpdfstring{ParseSensorData()}{ParseSensorData()}}
+{\footnotesize\ttfamily \label{classSensorsData_abf4553ff7699e7aedc27f085103e7268} 
+bool Sensors\+Data\+::\+Parse\+Sensor\+Data (\begin{DoxyParamCaption}\item[{const string \&}]{json\+Str}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Parses JSON string containing sensor data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em json\+Str} & The JSON string to parse \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if parsing was successful, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{classSensorsData_a0cd64854db383cd18a0325b63bb58e15}\index{SensorsData@{SensorsData}!ParseSensorValues@{ParseSensorValues}}
+\index{ParseSensorValues@{ParseSensorValues}!SensorsData@{SensorsData}}
+\doxysubsubsection{\texorpdfstring{ParseSensorValues()}{ParseSensorValues()}}
+{\footnotesize\ttfamily \label{classSensorsData_a0cd64854db383cd18a0325b63bb58e15} 
+bool Sensors\+Data\+::\+Parse\+Sensor\+Values (\begin{DoxyParamCaption}\item[{const string \&}]{json\+Str}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Parses JSON string containing sensor measurement values. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em json\+Str} & The JSON string to parse \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if parsing was successful, false otherwise 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/home/szymon/\+CLion\+Projects/weather-\/app-\/2/api/Sensors\+Data.\+h\item 
+/home/szymon/\+CLion\+Projects/weather-\/app-\/2/api/\mbox{\hyperlink{SensorsData_8h}{Sensors\+Data.\+h}}\item 
 /home/szymon/\+CLion\+Projects/weather-\/app-\/2/api/Sensors\+Data.\+cpp\end{DoxyCompactItemize}

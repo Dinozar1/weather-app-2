@@ -1,7 +1,7 @@
 var annotated_dup =
 [
-    [ "CustomImGui", "classCustomImGui.html", null ],
+    [ "CustomImGui", "classCustomImGui.html", "classCustomImGui" ],
     [ "SensorsData", "classSensorsData.html", "classSensorsData" ],
     [ "StationData", "classStationData.html", "classStationData" ],
-    [ "UseImGui", "classUseImGui.html", null ]
+    [ "UseImGui", "classUseImGui.html", "classUseImGui" ]
 ];

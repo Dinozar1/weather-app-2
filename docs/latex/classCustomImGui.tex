@@ -1,5 +1,14 @@
 \doxysection{Custom\+Im\+Gui Class Reference}
 \hypertarget{classCustomImGui}{}\label{classCustomImGui}\index{CustomImGui@{CustomImGui}}
+
+
+Custom Im\+Gui implementation for air quality station monitoring.  
+
+
+
+
+{\ttfamily \#include $<$Use\+Im\+Gui.\+h$>$}
+
 Inheritance diagram for Custom\+Im\+Gui\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,26 +19,45 @@ Inheritance diagram for Custom\+Im\+Gui\+:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{classCustomImGui_a1b0f2c45b291963be11b58f535c9f3e1}{Update}} () override
+\begin{DoxyCompactList}\small\item\em Implements the application GUI. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCustomImGui_a2dea0c231ea66f5a097a6a9c54cd4d19}{Show\+Station\+Sensors\+Window}} ()
+\begin{DoxyCompactList}\small\item\em Displaying a window with selected station from the main interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classUseImGui}{Use\+Im\+Gui}}}
+\begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classCustomImGui_a2dea0c231ea66f5a097a6a9c54cd4d19}\label{classCustomImGui_a2dea0c231ea66f5a097a6a9c54cd4d19} 
-void {\bfseries Show\+Station\+Sensors\+Window} ()
-\end{DoxyCompactItemize}
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Use\+Im\+Gui} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor for proper inheritance. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{classUseImGui}{Use\+Im\+Gui}}}
 \begin{DoxyCompactItemize}
 \item 
-static void {\bfseries Init} (GLFWwindow \texorpdfstring{$\ast$}{*}window, const char \texorpdfstring{$\ast$}{*}glsl\+\_\+version)
-\item 
-static void {\bfseries New\+Frame} ()
-\item 
-static void {\bfseries Render} ()
-\item 
-static void {\bfseries Shutdown} ()
-\end{DoxyCompactItemize}
+static void \mbox{\hyperlink{classUseImGui_add84697eb339f06fc4a0c4000ac93a6f}{Init}} (GLFWwindow \texorpdfstring{$\ast$}{*}window, const char \texorpdfstring{$\ast$}{*}glsl\+\_\+version)
+\begin{DoxyCompactList}\small\item\em Initializes Im\+Gui with GLFW and Open\+GL. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classUseImGui_afdd1bcf8a243c3909f1741be360c64be}{New\+Frame}} ()
+\begin{DoxyCompactList}\small\item\em Begins a new Im\+Gui frame. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classUseImGui_ac16007ac2fdb722f07033e4bdb100d3d}{Render}} ()
+\begin{DoxyCompactList}\small\item\em Renders Im\+Gui elements to the screen. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classUseImGui_a17344082441a8968621d2a1014f02d8a}{Shutdown}} ()
+\begin{DoxyCompactList}\small\item\em Cleans up Im\+Gui resources. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Custom Im\+Gui implementation for air quality station monitoring. 
+
+Provides a specific GUI for GIOŚ air quality application like rendering Stations, Sensors and sensors values with analitics 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classCustomImGui_a1b0f2c45b291963be11b58f535c9f3e1}\index{CustomImGui@{CustomImGui}!Update@{Update}}
+\Hypertarget{classCustomImGui_a2dea0c231ea66f5a097a6a9c54cd4d19}\index{CustomImGui@{CustomImGui}!ShowStationSensorsWindow@{ShowStationSensorsWindow}}
+\index{ShowStationSensorsWindow@{ShowStationSensorsWindow}!CustomImGui@{CustomImGui}}
+\doxysubsubsection{\texorpdfstring{ShowStationSensorsWindow()}{ShowStationSensorsWindow()}}
+{\footnotesize\ttfamily \label{classCustomImGui_a2dea0c231ea66f5a097a6a9c54cd4d19} 
+void Custom\+Im\+Gui\+::\+Show\+Station\+Sensors\+Window (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Displaying a window with selected station from the main interface. 
+
+Shows information of the selected station with a list of available sensors and its parameters \Hypertarget{classCustomImGui_a1b0f2c45b291963be11b58f535c9f3e1}\index{CustomImGui@{CustomImGui}!Update@{Update}}
 \index{Update@{Update}!CustomImGui@{CustomImGui}}
 \doxysubsubsection{\texorpdfstring{Update()}{Update()}}
 {\footnotesize\ttfamily \label{classCustomImGui_a1b0f2c45b291963be11b58f535c9f3e1} 
@@ -37,11 +65,15 @@ void Custom\+Im\+Gui\+::\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCapt
 
 
 
-Reimplemented from \mbox{\hyperlink{classUseImGui}{Use\+Im\+Gui}}.
+Implements the application GUI. 
+
+There will be all components of GUI interfaces like text, input tables etc. 
+
+Reimplemented from \mbox{\hyperlink{classUseImGui_a251657271f6dc06da028d0fb9e9380f3}{Use\+Im\+Gui}}.
 
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/home/szymon/\+CLion\+Projects/weather-\/app-\/2/Use\+Im\+Gui.\+h\item 
+/home/szymon/\+CLion\+Projects/weather-\/app-\/2/\mbox{\hyperlink{UseImGui_8h}{Use\+Im\+Gui.\+h}}\item 
 /home/szymon/\+CLion\+Projects/weather-\/app-\/2/Use\+Im\+Gui.\+cpp\end{DoxyCompactItemize}

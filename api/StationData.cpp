@@ -1,3 +1,9 @@
+/**
+* @file StationData.cpp
+ * @brief Implementation of StationData class methods
+ * @details Contains functions for fetching, parsing, and processing station data.
+ */
+
 #include "StationData.h"
 #include <curl/curl.h>
 #include <nlohmann/json.hpp>
@@ -6,6 +12,11 @@
 using namespace std;
 using namespace nlohmann;
 
+
+/**
+ * @brief Helper function to clean up curl resources
+ * @param curl Pointer to the curl handle to clean up
+ */
 void curlCleanup(CURL *curl) {
     curl_easy_cleanup(curl); // Clean up the current curl
     curl_global_cleanup(); //Perform global curl cleanup
@@ -13,6 +24,14 @@ void curlCleanup(CURL *curl) {
 
 vector<StationData::Station> StationData::stations;
 
+
+/**
+ * @brief Fetches data from the specified URI
+ * @details Uses libcurl to make an HTTP request to the given URI
+ *          and returns the response as a string
+ * @param uri The URI string endpoint to fetch data from
+ * @return JSON string containing station data or empty string on failure
+ */
 string StationData::FetchStations(const string& uri) {
     string readBuffer;
 
@@ -36,10 +55,19 @@ string StationData::FetchStations(const string& uri) {
     return "";
 }
 
-// When libcurl make an HTTP request, data isn't received all at once. It comes in chunks. This callback function:
-// Collects these chunks
-// Stores them in a single string
-// Allows you to process the entire response
+/**
+ * @brief Callback function for libcurl to handle received data
+ * @details When libcurl makes an HTTP request, data isn't received all at once.
+ *          It comes in chunks. This callback function:
+ *          - Collects these chunks
+ *          - Stores them in a single string
+ *          - Allows processing the entire response
+ * @param contents Pointer to the received data
+ * @param size Size of each data element
+ * @param nmemb Number of data elements
+ * @param userp Pointer to string buffer
+ * @return Total size of processed data
+ */
 
 size_t StationData::WriteCallback(void *contents, const size_t size, const size_t nmemb, void *userp) {
 
@@ -56,6 +84,13 @@ size_t StationData::WriteCallback(void *contents, const size_t size, const size_
     return totalSize;
 }
 
+
+/**
+ * @brief Parses JSON string containing station data
+ * @details Processes the JSON response from the fetch method and populates
+ *          the stations vector with Station objects
+ * @param jsonStr The JSON string to parse
+ */
 void StationData::ParseStations(const string& jsonStr) {
     try {
         //Parse string
@@ -67,24 +102,27 @@ void StationData::ParseStations(const string& jsonStr) {
         for ( const auto& stationJson : json) {
             Station station;
 
-            // parse station details to object
-            // Example object:
-            // {
-            //     "id": 741,
-            //     "stationName": "Malbork, ul. Mickiewicza",
-            //     "gegrLat": "54.031247",
-            //     "gegrLon": "19.032899",
-            //     "city": {
-            //         "id": 527,
-            //         "name": "Malbork",
-            //         "commune": {
-            //             "communeName": "Malbork",
-            //             "districtName": "malborski",
-            //             "provinceName": "POMORSKIE"
-            //         }
-            //     },
-            //     "addressStreet": "ul. Mickiewicza" // might be null!
-            // }
+            /**
+              * @brief Example JSON object structure:
+              * @code
+              * {
+              *     "id": 741,
+              *     "stationName": "Malbork, ul. Mickiewicza",
+              *     "gegrLat": "54.031247",
+              *     "gegrLon": "19.032899",
+              *     "city": {
+              *         "id": 527,
+              *         "name": "Malbork",
+              *         "commune": {
+              *             "communeName": "Malbork",
+              *             "districtName": "malborski",
+              *             "provinceName": "POMORSKIE"
+              *         }
+              *     },
+              *     "addressStreet": "ul. Mickiewicza" // might be null!
+              * }
+              * @endcode
+              */
 
             station.id = stationJson.value("id", 0);
             station.stationName = stationJson.value("stationName", "");

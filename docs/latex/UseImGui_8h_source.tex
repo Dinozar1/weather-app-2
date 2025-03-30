@@ -1,59 +1,75 @@
 \doxysection{/home/szymon/\+CLion\+Projects/weather-\/app-\/2/\+Use\+Im\+Gui.h}
-\hypertarget{UseImGui_8h_source}{}\label{UseImGui_8h_source}
+\hypertarget{UseImGui_8h_source}{}\label{UseImGui_8h_source}\mbox{\hyperlink{UseImGui_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
-\DoxyCodeLine{00002\ }
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <imgui.h>}}
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <imgui\_impl\_glfw.h>}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <imgui\_impl\_opengl3.h>}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <string>}}
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <algorithm>}}
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <ranges>}}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{StationData_8h}{./api/StationData.h}}"{}}}
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}api/SensorsData.h"{}}}
-\DoxyCodeLine{00012\ }
-\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classUseImGui}{UseImGui}}\ \{}
-\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classUseImGui}{\string~UseImGui}}()\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00016\ }
-\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Init(GLFWwindow*\ window,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ glsl\_version);}
-\DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ NewFrame();}
-\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Update();}
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Render();}
-\DoxyCodeLine{00023\ }
-\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Shutdown();}
-\DoxyCodeLine{00025\ \};}
-\DoxyCodeLine{00026\ }
-\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCustomImGui}{CustomImGui}}\ final\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classUseImGui}{UseImGui}}\ \{}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <imgui.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <imgui\_impl\_glfw.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <imgui\_impl\_opengl3.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <ranges>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{StationData_8h}{./api/StationData.h}}"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{SensorsData_8h}{api/SensorsData.h}}"{}}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classUseImGui}{UseImGui}}\ \{}
 \DoxyCodeLine{00028\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ Update()\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ ShowStationSensorsWindow();}
-\DoxyCodeLine{00031\ }
-\DoxyCodeLine{00032\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//\ Store\ searched\ stations\ within\ radius}}
-\DoxyCodeLine{00034\ \ \ \ \ std::vector<StationData::Station>\ radiusStations;}
-\DoxyCodeLine{00035\ }
-\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//\ Search\ parameters}}
-\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{char}\ addressBuffer[256]\ =\ \textcolor{stringliteral}{"{}"{}};}
-\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{float}\ searchRadius\ =\ 10.0f;\ \textcolor{comment}{//\ Default\ 10\ km}}
-\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{bool}\ isRadiusSearch\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classUseImGui_ab01f36eeef25a3031c7e44dfded5e48f}{\string~UseImGui}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classUseImGui_add84697eb339f06fc4a0c4000ac93a6f}{Init}}(GLFWwindow*\ window,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ glsl\_version);}
 \DoxyCodeLine{00040\ }
-\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//Selecting\ sensors\ methods}}
-\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structStationData_1_1Station}{StationData::Station}}\ *selectedStation\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{bool}\ showSensorsWindow\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00044\ }
-\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ FetchStationSensors(\textcolor{keywordtype}{int}\ stationId);}
-\DoxyCodeLine{00046\ }
-\DoxyCodeLine{00047\ \ \ \ \ \textcolor{comment}{//Sensors\ values}}
-\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structSensorsData_1_1Sensor}{SensorsData::Sensor}}\ *selectedSensor\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{bool}\ showSensorsValueBox\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00050\ }
-\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ FetchSensorValues(\textcolor{keywordtype}{int}\ sensorId);}
-\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classUseImGui_afdd1bcf8a243c3909f1741be360c64be}{NewFrame}}();}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classUseImGui_a251657271f6dc06da028d0fb9e9380f3}{Update}}();}
 \DoxyCodeLine{00053\ }
-\DoxyCodeLine{00054\ \};}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classUseImGui_ac16007ac2fdb722f07033e4bdb100d3d}{Render}}();}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classUseImGui_a17344082441a8968621d2a1014f02d8a}{Shutdown}}();}
+\DoxyCodeLine{00065\ \};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00073\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCustomImGui}{CustomImGui}}\ final\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classUseImGui}{UseImGui}}\ \{}
+\DoxyCodeLine{00074\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCustomImGui_a1b0f2c45b291963be11b58f535c9f3e1}{Update}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCustomImGui_a2dea0c231ea66f5a097a6a9c54cd4d19}{ShowStationSensorsWindow}}();}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00089\ \ \ \ \ std::vector<StationData::Station>\ radiusStations;}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{comment}{//\ Search\ parameters}}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{char}\ addressBuffer[256]\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{float}\ searchRadius\ =\ 10.0f;\ \textcolor{comment}{//\ Default\ 10\ km}}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{bool}\ isRadiusSearch\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{comment}{//second\ window\ with\ sensors}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{comment}{//Selecting\ sensors\ methods}}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structStationData_1_1Station}{StationData::Station}}\ *selectedStation\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keywordtype}{bool}\ showSensorsWindow\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ FetchStationSensors(\textcolor{keywordtype}{int}\ stationId);}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{comment}{//Sensors\ values}}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structSensorsData_1_1Sensor}{SensorsData::Sensor}}\ *selectedSensor\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordtype}{bool}\ showSensorsValueBox\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ FetchSensorValues(\textcolor{keywordtype}{int}\ sensorId);}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \};}
 
 \end{DoxyCode}

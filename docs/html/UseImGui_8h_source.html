@@ -105,75 +105,100 @@ $(function(){initNavTree('UseImGui_8h_source.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">/home/szymon/CLionProjects/weather-app-2/UseImGui.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;imgui.h&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;imgui_impl_glfw.h&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;imgui_impl_opengl3.h&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;ranges&gt;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="StationData_8h.html">./api/StationData.h</a>&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;api/SensorsData.h&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="classUseImGui.html">   13</a></span><span class="keyword">class </span><a class="code hl_class" href="classUseImGui.html">UseImGui</a> {</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keyword">virtual</span> <a class="code hl_class" href="classUseImGui.html">~UseImGui</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> Init(GLFWwindow* window, <span class="keyword">const</span> <span class="keywordtype">char</span>* glsl_version);</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> NewFrame();</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> Update();</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> Render();</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> Shutdown();</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>};</div>
-</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<a href="UseImGui_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;imgui.h&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;imgui_impl_glfw.h&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;imgui_impl_opengl3.h&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;ranges&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;<a class="code" href="StationData_8h.html">./api/StationData.h</a>&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="SensorsData_8h.html">api/SensorsData.h</a>&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span></div>
 <div class="foldopen" id="foldopen00027" data-start="{" data-end="};">
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classCustomImGui.html">   27</a></span><span class="keyword">class </span><a class="code hl_class" href="classCustomImGui.html">CustomImGui</a> final : <span class="keyword">public</span> <a class="code hl_class" href="classUseImGui.html">UseImGui</a> {</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classUseImGui.html">   27</a></span><span class="keyword">class </span><a class="code hl_class" href="classUseImGui.html">UseImGui</a> {</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordtype">void</span> Update() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">void</span> ShowStationSensorsWindow();</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="comment">// Store searched stations within radius</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    std::vector&lt;StationData::Station&gt; radiusStations;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="comment">// Search parameters</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">char</span> addressBuffer[256] = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">float</span> searchRadius = 10.0f; <span class="comment">// Default 10 km</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">bool</span> isRadiusSearch = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classUseImGui.html#ab01f36eeef25a3031c7e44dfded5e48f">   32</a></span>    <span class="keyword">virtual</span> <a class="code hl_function" href="classUseImGui.html#ab01f36eeef25a3031c7e44dfded5e48f">~UseImGui</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classUseImGui.html#add84697eb339f06fc4a0c4000ac93a6f">Init</a>(GLFWwindow* window, <span class="keyword">const</span> <span class="keywordtype">char</span>* glsl_version);</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="comment">//Selecting sensors methods</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keyword">const</span> <a class="code hl_struct" href="structStationData_1_1Station.html">StationData::Station</a> *selectedStation = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">bool</span> showSensorsWindow = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> FetchStationSensors(<span class="keywordtype">int</span> stationId);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="comment">//Sensors values</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keyword">const</span> <a class="code hl_struct" href="structSensorsData_1_1Sensor.html">SensorsData::Sensor</a> *selectedSensor = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">bool</span> showSensorsValueBox = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> FetchSensorValues(<span class="keywordtype">int</span> sensorId);</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>};</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classUseImGui.html#afdd1bcf8a243c3909f1741be360c64be">NewFrame</a>();</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classUseImGui.html#a251657271f6dc06da028d0fb9e9380f3">Update</a>();</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classUseImGui.html#ac16007ac2fdb722f07033e4bdb100d3d">Render</a>();</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classUseImGui.html#a17344082441a8968621d2a1014f02d8a">Shutdown</a>();</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>};</div>
 </div>
-<div class="ttc" id="aStationData_8h_html"><div class="ttname"><a href="StationData_8h.html">StationData.h</a></div><div class="ttdoc">Provides class for Stations objects.</div></div>
-<div class="ttc" id="aclassCustomImGui_html"><div class="ttname"><a href="classCustomImGui.html">CustomImGui</a></div><div class="ttdef"><b>Definition</b> UseImGui.h:27</div></div>
-<div class="ttc" id="aclassUseImGui_html"><div class="ttname"><a href="classUseImGui.html">UseImGui</a></div><div class="ttdef"><b>Definition</b> UseImGui.h:13</div></div>
-<div class="ttc" id="astructSensorsData_1_1Sensor_html"><div class="ttname"><a href="structSensorsData_1_1Sensor.html">SensorsData::Sensor</a></div><div class="ttdef"><b>Definition</b> SensorsData.h:16</div></div>
-<div class="ttc" id="astructStationData_1_1Station_html"><div class="ttname"><a href="structStationData_1_1Station.html">StationData::Station</a></div><div class="ttdef"><b>Definition</b> StationData.h:18</div></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span></div>
+<div class="foldopen" id="foldopen00073" data-start="{" data-end="};">
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="classCustomImGui.html">   73</a></span><span class="keyword">class </span><a class="code hl_class" href="classCustomImGui.html">CustomImGui</a> final : <span class="keyword">public</span> <a class="code hl_class" href="classUseImGui.html">UseImGui</a> {</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classCustomImGui.html#a1b0f2c45b291963be11b58f535c9f3e1">Update</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classCustomImGui.html#a2dea0c231ea66f5a097a6a9c54cd4d19">ShowStationSensorsWindow</a>();</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    std::vector&lt;StationData::Station&gt; radiusStations;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="comment">// Search parameters</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keywordtype">char</span> addressBuffer[256] = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keywordtype">float</span> searchRadius = 10.0f; <span class="comment">// Default 10 km</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keywordtype">bool</span> isRadiusSearch = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="comment">//second window with sensors</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="comment">//Selecting sensors methods</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="keyword">const</span> <a class="code hl_struct" href="structStationData_1_1Station.html">StationData::Station</a> *selectedStation = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keywordtype">bool</span> showSensorsWindow = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> FetchStationSensors(<span class="keywordtype">int</span> stationId);</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="comment">//Sensors values</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keyword">const</span> <a class="code hl_struct" href="structSensorsData_1_1Sensor.html">SensorsData::Sensor</a> *selectedSensor = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="keywordtype">bool</span> showSensorsValueBox = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> FetchSensorValues(<span class="keywordtype">int</span> sensorId);</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>};</div>
+</div>
+<div class="ttc" id="aSensorsData_8h_html"><div class="ttname"><a href="SensorsData_8h.html">SensorsData.h</a></div><div class="ttdoc">Manages sensor data.</div></div>
+<div class="ttc" id="aStationData_8h_html"><div class="ttname"><a href="StationData_8h.html">StationData.h</a></div><div class="ttdoc">Manages station data.</div></div>
+<div class="ttc" id="aclassCustomImGui_html"><div class="ttname"><a href="classCustomImGui.html">CustomImGui</a></div><div class="ttdoc">Custom ImGui implementation for air quality station monitoring.</div><div class="ttdef"><b>Definition</b> UseImGui.h:73</div></div>
+<div class="ttc" id="aclassCustomImGui_html_a1b0f2c45b291963be11b58f535c9f3e1"><div class="ttname"><a href="classCustomImGui.html#a1b0f2c45b291963be11b58f535c9f3e1">CustomImGui::Update</a></div><div class="ttdeci">void Update() override</div><div class="ttdoc">Implements the application GUI.</div><div class="ttdef"><b>Definition</b> UseImGui.cpp:51</div></div>
+<div class="ttc" id="aclassCustomImGui_html_a2dea0c231ea66f5a097a6a9c54cd4d19"><div class="ttname"><a href="classCustomImGui.html#a2dea0c231ea66f5a097a6a9c54cd4d19">CustomImGui::ShowStationSensorsWindow</a></div><div class="ttdeci">void ShowStationSensorsWindow()</div><div class="ttdoc">Displaying a window with selected station from the main interface.</div><div class="ttdef"><b>Definition</b> UseImGui.cpp:206</div></div>
+<div class="ttc" id="aclassUseImGui_html"><div class="ttname"><a href="classUseImGui.html">UseImGui</a></div><div class="ttdoc">Base class providing ImGui initialization and lifecycle management.</div><div class="ttdef"><b>Definition</b> UseImGui.h:27</div></div>
+<div class="ttc" id="aclassUseImGui_html_a17344082441a8968621d2a1014f02d8a"><div class="ttname"><a href="classUseImGui.html#a17344082441a8968621d2a1014f02d8a">UseImGui::Shutdown</a></div><div class="ttdeci">static void Shutdown()</div><div class="ttdoc">Cleans up ImGui resources.</div><div class="ttdef"><b>Definition</b> UseImGui.cpp:42</div></div>
+<div class="ttc" id="aclassUseImGui_html_a251657271f6dc06da028d0fb9e9380f3"><div class="ttname"><a href="classUseImGui.html#a251657271f6dc06da028d0fb9e9380f3">UseImGui::Update</a></div><div class="ttdeci">virtual void Update()</div><div class="ttdoc">Updates the ImGui UI elements.</div><div class="ttdef"><b>Definition</b> UseImGui.cpp:34</div></div>
+<div class="ttc" id="aclassUseImGui_html_ab01f36eeef25a3031c7e44dfded5e48f"><div class="ttname"><a href="classUseImGui.html#ab01f36eeef25a3031c7e44dfded5e48f">UseImGui::~UseImGui</a></div><div class="ttdeci">virtual ~UseImGui()=default</div><div class="ttdoc">Virtual destructor for proper inheritance.</div></div>
+<div class="ttc" id="aclassUseImGui_html_ac16007ac2fdb722f07033e4bdb100d3d"><div class="ttname"><a href="classUseImGui.html#ac16007ac2fdb722f07033e4bdb100d3d">UseImGui::Render</a></div><div class="ttdeci">static void Render()</div><div class="ttdoc">Renders ImGui elements to the screen.</div><div class="ttdef"><b>Definition</b> UseImGui.cpp:38</div></div>
+<div class="ttc" id="aclassUseImGui_html_add84697eb339f06fc4a0c4000ac93a6f"><div class="ttname"><a href="classUseImGui.html#add84697eb339f06fc4a0c4000ac93a6f">UseImGui::Init</a></div><div class="ttdeci">static void Init(GLFWwindow *window, const char *glsl_version)</div><div class="ttdoc">Initializes ImGui with GLFW and OpenGL.</div><div class="ttdef"><b>Definition</b> UseImGui.cpp:17</div></div>
+<div class="ttc" id="aclassUseImGui_html_afdd1bcf8a243c3909f1741be360c64be"><div class="ttname"><a href="classUseImGui.html#afdd1bcf8a243c3909f1741be360c64be">UseImGui::NewFrame</a></div><div class="ttdeci">static void NewFrame()</div><div class="ttdoc">Begins a new ImGui frame.</div><div class="ttdef"><b>Definition</b> UseImGui.cpp:27</div></div>
+<div class="ttc" id="astructSensorsData_1_1Sensor_html"><div class="ttname"><a href="structSensorsData_1_1Sensor.html">SensorsData::Sensor</a></div><div class="ttdoc">Represents an sensor.</div><div class="ttdef"><b>Definition</b> SensorsData.h:40</div></div>
+<div class="ttc" id="astructStationData_1_1Station_html"><div class="ttname"><a href="structStationData_1_1Station.html">StationData::Station</a></div><div class="ttdoc">Represents a Station in GIOS api system.</div><div class="ttdef"><b>Definition</b> StationData.h:30</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>UseImGui.h</b></li>
+    <li class="navelem"><a class="el" href="UseImGui_8h.html">UseImGui.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

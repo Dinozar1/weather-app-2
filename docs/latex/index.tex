@@ -1,0 +1,102 @@
+\chapter{Polish Air Quality Monitoring Application}
+\hypertarget{index}{}\label{index}\index{Polish Air Quality Monitoring Application@{Polish Air Quality Monitoring Application}}
+\label{index_md__2home_2szymon_2CLionProjects_2weather-app-2_2README}%
+\Hypertarget{index_md__2home_2szymon_2CLionProjects_2weather-app-2_2README}%
+\hypertarget{index_autotoc_md1}{}\doxysection{\texorpdfstring{Project Description}{Project Description}}\label{index_autotoc_md1}
+This application allows users to\+:
+\begin{DoxyItemize}
+\item Fetch all measurement stations across Poland
+\item Filter stations by city name
+\item Search for stations within a given radius using Open\+Street\+Map\textquotesingle{}s Nominatim geocoding service
+\item View measurement sensors for selected stations
+\item Display and analyze measurement data with statistical processing and graphical representation
+\end{DoxyItemize}\hypertarget{index_autotoc_md2}{}\doxysection{\texorpdfstring{Supported Platforms}{Supported Platforms}}\label{index_autotoc_md2}
+
+\begin{DoxyItemize}
+\item Linux (Debian)
+\item Linux (Arch Linux)
+\item Windows
+\end{DoxyItemize}\hypertarget{index_autotoc_md3}{}\doxysection{\texorpdfstring{System Requirements}{System Requirements}}\label{index_autotoc_md3}
+
+\begin{DoxyItemize}
+\item C++17 or later
+\item CMake (3.\+12 or later)
+\item vcpkg package manager
+\end{DoxyItemize}\hypertarget{index_autotoc_md4}{}\doxysection{\texorpdfstring{Setup and Installation (Linux)}{Setup and Installation (Linux)}}\label{index_autotoc_md4}
+\hypertarget{index_autotoc_md5}{}\doxysubsection{\texorpdfstring{Debian Setup}{Debian Setup}}\label{index_autotoc_md5}
+
+\begin{DoxyEnumerate}
+\item Update system packages 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sudo\ apt\ update}
+\DoxyCodeLine{sudo\ apt\ upgrade}
+
+\end{DoxyCode}
+
+\item Install required build tools 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sudo\ apt\ install\ build-\/essential\ cmake\ git\ wget\ curl\ unzip\ software-\/properties-\/common\ g++\ gcc}
+
+\end{DoxyCode}
+
+\item Install vcpkg 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git\ clone\ https://github.com/Microsoft/vcpkg.git}
+\DoxyCodeLine{cd\ vcpkg}
+\DoxyCodeLine{./bootstrap-\/vcpkg.sh}
+
+\end{DoxyCode}
+
+\item Install project dependencies via vcpkg 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./vcpkg\ install}
+
+\end{DoxyCode}
+
+\end{DoxyEnumerate}\hypertarget{index_autotoc_md6}{}\doxysubsection{\texorpdfstring{Arch Linux Setup}{Arch Linux Setup}}\label{index_autotoc_md6}
+
+\begin{DoxyEnumerate}
+\item Update system packages 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sudo\ pacman\ -\/Syu}
+
+\end{DoxyCode}
+
+\item Install build tools 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sudo\ pacman\ -\/S\ base-\/devel\ cmake\ git\ wget\ curl\ unzip\ gcc}
+
+\end{DoxyCode}
+
+\item Install vcpkg 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git\ clone\ https://github.com/Microsoft/vcpkg.git}
+\DoxyCodeLine{cd\ vcpkg}
+\DoxyCodeLine{./bootstrap-\/vcpkg.sh}
+
+\end{DoxyCode}
+
+\item Install project dependencies via vcpkg 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./vcpkg\ install}
+
+\end{DoxyCode}
+
+\end{DoxyEnumerate}\hypertarget{index_autotoc_md7}{}\doxysection{\texorpdfstring{IDE configuration}{IDE configuration}}\label{index_autotoc_md7}
+For cmake add path to vcpkg.\+cmake in build options 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/DCMAKE\_TOOLCHAIN\_FILE=/home/\$USER/vcpkg/scripts/buildsystems/vcpkg.cmake}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md8}{}\doxysection{\texorpdfstring{API References}{API References}}\label{index_autotoc_md8}
+
+\begin{DoxyItemize}
+\item GIOS Air Quality API\+: \href{https://powietrze.gios.gov.pl/pjp/content/api}{\texttt{ https\+://powietrze.\+gios.\+gov.\+pl/pjp/content/api}}
+\item Open\+Street\+Map Nominatim\+: \href{https://nominatim.openstreetmap.org/}{\texttt{ https\+://nominatim.\+openstreetmap.\+org/}}
+\end{DoxyItemize}\hypertarget{index_autotoc_md9}{}\doxysection{\texorpdfstring{Troubleshooting}{Troubleshooting}}\label{index_autotoc_md9}
+
+\begin{DoxyItemize}
+\item Ensure all dependencies are correctly installed
+\item Check internet connectivity for API requests
+\item Verify vcpkg toolchain is correctly configured 
+\end{DoxyItemize}

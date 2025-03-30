@@ -110,29 +110,109 @@ $(function(){initNavTree('classSensorsData.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">SensorsData Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Provides a class for storing data of the selected station.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="SensorsData_8h_source.html">SensorsData.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSensorsData_1_1Sensor.html">Sensor</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an sensor.  <a href="structSensorsData_1_1Sensor.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSensorsData_1_1SensorValue.html">SensorValue</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a single measurement from a sensor.  <a href="structSensorsData_1_1SensorValue.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:abf4553ff7699e7aedc27f085103e7268" id="r_abf4553ff7699e7aedc27f085103e7268"><td class="memItemLeft" align="right" valign="top"><a id="abf4553ff7699e7aedc27f085103e7268" name="abf4553ff7699e7aedc27f085103e7268"></a>
-static bool&#160;</td><td class="memItemRight" valign="bottom"><b>ParseSensorData</b> (const string &amp;jsonStr)</td></tr>
+<tr class="memitem:abf4553ff7699e7aedc27f085103e7268" id="r_abf4553ff7699e7aedc27f085103e7268"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abf4553ff7699e7aedc27f085103e7268">ParseSensorData</a> (const string &amp;jsonStr)</td></tr>
+<tr class="memdesc:abf4553ff7699e7aedc27f085103e7268"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses JSON string containing sensor data.  <br /></td></tr>
 <tr class="separator:abf4553ff7699e7aedc27f085103e7268"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0cd64854db383cd18a0325b63bb58e15" id="r_a0cd64854db383cd18a0325b63bb58e15"><td class="memItemLeft" align="right" valign="top"><a id="a0cd64854db383cd18a0325b63bb58e15" name="a0cd64854db383cd18a0325b63bb58e15"></a>
-static bool&#160;</td><td class="memItemRight" valign="bottom"><b>ParseSensorValues</b> (const string &amp;jsonStr)</td></tr>
+<tr class="memitem:a0cd64854db383cd18a0325b63bb58e15" id="r_a0cd64854db383cd18a0325b63bb58e15"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0cd64854db383cd18a0325b63bb58e15">ParseSensorValues</a> (const string &amp;jsonStr)</td></tr>
+<tr class="memdesc:a0cd64854db383cd18a0325b63bb58e15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses JSON string containing sensor measurement values.  <br /></td></tr>
 <tr class="separator:a0cd64854db383cd18a0325b63bb58e15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:a7a5e88d48575a0a37a529f3ac961d8bc" id="r_a7a5e88d48575a0a37a529f3ac961d8bc"><td class="memItemLeft" align="right" valign="top"><a id="a7a5e88d48575a0a37a529f3ac961d8bc" name="a7a5e88d48575a0a37a529f3ac961d8bc"></a>
 static vector&lt; <a class="el" href="structSensorsData_1_1Sensor.html">Sensor</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>sensors</b></td></tr>
+<tr class="memdesc:a7a5e88d48575a0a37a529f3ac961d8bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Collection of all sensors. <br /></td></tr>
 <tr class="separator:a7a5e88d48575a0a37a529f3ac961d8bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Provides a class for storing data of the selected station. </p>
+<p>Provides structs and vectors representing GIOŚ api and parsing methods </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="abf4553ff7699e7aedc27f085103e7268" name="abf4553ff7699e7aedc27f085103e7268"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf4553ff7699e7aedc27f085103e7268">&#9670;&#160;</a></span>ParseSensorData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SensorsData::ParseSensorData </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;</td>          <td class="paramname"><span class="paramname"><em>jsonStr</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Parses JSON string containing sensor data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">jsonStr</td><td>The JSON string to parse </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if parsing was successful, false otherwise </dd></dl>
+
+</div>
+</div>
+<a id="a0cd64854db383cd18a0325b63bb58e15" name="a0cd64854db383cd18a0325b63bb58e15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cd64854db383cd18a0325b63bb58e15">&#9670;&#160;</a></span>ParseSensorValues()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SensorsData::ParseSensorValues </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;</td>          <td class="paramname"><span class="paramname"><em>jsonStr</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Parses JSON string containing sensor measurement values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">jsonStr</td><td>The JSON string to parse </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if parsing was successful, false otherwise </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/szymon/CLionProjects/weather-app-2/api/<a class="el" href="SensorsData_8h_source.html">SensorsData.h</a></li>
 <li>/home/szymon/CLionProjects/weather-app-2/api/<b>SensorsData.cpp</b></li>

@@ -12,6 +12,15 @@ using namespace nlohmann;
 
 vector<SensorsData::Sensor> SensorsData::sensors;
 
+/**
+ * @brief Parses sensor metadata from JSON string
+ * @param jsonStr The JSON string containing sensor data
+ * @return true if parsing was successful, false otherwise
+ *
+* @details Processes the JSON response from the fetch method and populates
+ *          the sensors vector with sensor objects
+ */
+
 bool SensorsData::ParseSensorData(const string &jsonStr) {
     try {
         //Parse string
@@ -22,19 +31,23 @@ bool SensorsData::ParseSensorData(const string &jsonStr) {
 
         for ( const auto& stationJson : json) {
             Sensor sensor;
-
-            // parse station details to object
-            // Example object:
-            // {
-            //     "id": 3486,
-            //     "stationId": 515,
-            //     "param": {
-            //          "paramName": "benzen",
-            //          "paramFormula": "C6H6",
-            //          "paramCode": "C6H6",
-            //          "idParam": 10
-            //      }
-            // }
+            /**
+            * @brief Example JSON format:
+            * @code
+            * [
+            *   {
+            *     "id": 3486,
+            *     "stationId": 515,
+            *     "param": {
+            *       "paramName": "benzen",
+            *       "paramFormula": "C6H6",
+            *       "paramCode": "C6H6",
+            *       "idParam": 10
+            *     }
+            *   }
+            * ]
+            * @endcode
+            */
 
             sensor.id = stationJson.value("id", 0);
             sensor.stationId = stationJson.value("stationId", 0);
@@ -56,6 +69,15 @@ bool SensorsData::ParseSensorData(const string &jsonStr) {
     }
 }
 
+/**
+ * @brief Parses sensor values metadata from JSON string
+ * @param jsonStr The JSON string containing sensor values
+ * @return true if parsing was successful, false otherwise
+ *
+* @details Processes the JSON response from the fetch method and populates
+ *          the sensorValues vector with values of this sensor
+ */
+
 bool SensorsData::ParseSensorValues(const string &jsonStr) {
     try {
         //Parse string
@@ -67,19 +89,24 @@ bool SensorsData::ParseSensorValues(const string &jsonStr) {
         for (auto& sensor : sensors) {
             sensor.sensorsValues.clear();
         }
-
-        // parse station details to object
-        // Example object:{
-        // "key": "PM10",
-        // "values": [
-        //     {
-        //         "date": "2025-03-27 12:00:00",
-        //         "value": 7.0
-        //     },
-        //     {
-        //         "date": "2025-03-27 11:00:00",
-        //         "value": 6.9
-        //     }]
+        /**
+            * @brief Example JSON format:
+            * @code
+            * {
+         *   "key": "PM10",
+         *   "values": [
+         *     {
+         *       "date": "2025-03-27 12:00:00",
+         *       "value": 7.0
+         *     },
+         *     {
+         *       "date": "2025-03-27 11:00:00",
+         *       "value": 6.9
+         *     }
+         *   ]
+         * }
+        * @endcode
+        */
 
 
 

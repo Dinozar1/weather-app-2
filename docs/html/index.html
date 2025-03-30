@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>weather-app-2: Main Page</title>
+<title>weather-app-2: Polish Air Quality Monitoring Application</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -101,10 +101,82 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
 </div>
 </div>
 
-<div class="header">
-  <div class="headertitle"><div class="title">weather-app-2 Documentation</div></div>
+<div><div class="header">
+  <div class="headertitle"><div class="title">Polish Air Quality Monitoring Application </div></div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><p><a class="anchor" id="md__2home_2szymon_2CLionProjects_2weather-app-2_2README"></a></p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+Project Description</h1>
+<p>This application allows users to:</p><ul>
+<li>Fetch all measurement stations across Poland</li>
+<li>Filter stations by city name</li>
+<li>Search for stations within a given radius using OpenStreetMap's Nominatim geocoding service</li>
+<li>View measurement sensors for selected stations</li>
+<li>Display and analyze measurement data with statistical processing and graphical representation</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Supported Platforms</h1>
+<ul>
+<li>Linux (Debian)</li>
+<li>Linux (Arch Linux)</li>
+<li>Windows</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md3"></a>
+System Requirements</h1>
+<ul>
+<li>C++17 or later</li>
+<li>CMake (3.12 or later)</li>
+<li>vcpkg package manager</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md4"></a>
+Setup and Installation (Linux)</h1>
+<h2><a class="anchor" id="autotoc_md5"></a>
+Debian Setup</h2>
+<ol type="1">
+<li>Update system packages <div class="fragment"><div class="line">sudo apt update</div>
+<div class="line">sudo apt upgrade</div>
+</div><!-- fragment --></li>
+<li>Install required build tools <div class="fragment"><div class="line">sudo apt install build-essential cmake git wget curl unzip software-properties-common g++ gcc</div>
+</div><!-- fragment --></li>
+<li>Install vcpkg <div class="fragment"><div class="line">git clone https://github.com/Microsoft/vcpkg.git</div>
+<div class="line">cd vcpkg</div>
+<div class="line">./bootstrap-vcpkg.sh</div>
+</div><!-- fragment --></li>
+<li>Install project dependencies via vcpkg <div class="fragment"><div class="line">./vcpkg install</div>
+</div><!-- fragment --></li>
+</ol>
+<h2><a class="anchor" id="autotoc_md6"></a>
+Arch Linux Setup</h2>
+<ol type="1">
+<li>Update system packages <div class="fragment"><div class="line">sudo pacman -Syu</div>
+</div><!-- fragment --></li>
+<li>Install build tools <div class="fragment"><div class="line">sudo pacman -S base-devel cmake git wget curl unzip gcc</div>
+</div><!-- fragment --></li>
+<li>Install vcpkg <div class="fragment"><div class="line">git clone https://github.com/Microsoft/vcpkg.git</div>
+<div class="line">cd vcpkg</div>
+<div class="line">./bootstrap-vcpkg.sh</div>
+</div><!-- fragment --></li>
+<li>Install project dependencies via vcpkg <div class="fragment"><div class="line">./vcpkg install</div>
+</div><!-- fragment --></li>
+</ol>
+<h1><a class="anchor" id="autotoc_md7"></a>
+IDE configuration</h1>
+<p>For cmake add path to vcpkg.cmake in build options </p><div class="fragment"><div class="line">-DCMAKE_TOOLCHAIN_FILE=/home/$USER/vcpkg/scripts/buildsystems/vcpkg.cmake</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md8"></a>
+API References</h1>
+<ul>
+<li>GIOS Air Quality API: <a href="https://powietrze.gios.gov.pl/pjp/content/api">https://powietrze.gios.gov.pl/pjp/content/api</a></li>
+<li>OpenStreetMap Nominatim: <a href="https://nominatim.openstreetmap.org/">https://nominatim.openstreetmap.org/</a></li>
+</ul>
+<h1><a class="anchor" id="autotoc_md9"></a>
+Troubleshooting</h1>
+<ul>
+<li>Ensure all dependencies are correctly installed</li>
+<li>Check internet connectivity for API requests</li>
+<li>Verify vcpkg toolchain is correctly configured </li>
+</ul>
+</div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"></a>
 </div><!-- contents -->
 </div><!-- doc-content -->

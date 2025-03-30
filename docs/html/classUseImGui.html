@@ -109,37 +109,202 @@ $(function(){initNavTree('classUseImGui.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">UseImGui Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Base class providing ImGui initialization and lifecycle management.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="UseImGui_8h_source.html">UseImGui.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for UseImGui:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="classUseImGui.png" usemap="#UseImGui_map" alt=""/>
   <map id="UseImGui_map" name="UseImGui_map">
-<area href="classCustomImGui.html" alt="CustomImGui" shape="rect" coords="0,56,84,80"/>
+<area href="classCustomImGui.html" title="Custom ImGui implementation for air quality station monitoring." alt="CustomImGui" shape="rect" coords="0,56,84,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a251657271f6dc06da028d0fb9e9380f3" id="r_a251657271f6dc06da028d0fb9e9380f3"><td class="memItemLeft" align="right" valign="top"><a id="a251657271f6dc06da028d0fb9e9380f3" name="a251657271f6dc06da028d0fb9e9380f3"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>Update</b> ()</td></tr>
+<tr class="memitem:ab01f36eeef25a3031c7e44dfded5e48f" id="r_ab01f36eeef25a3031c7e44dfded5e48f"><td class="memItemLeft" align="right" valign="top"><a id="ab01f36eeef25a3031c7e44dfded5e48f" name="ab01f36eeef25a3031c7e44dfded5e48f"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~UseImGui</b> ()=default</td></tr>
+<tr class="memdesc:ab01f36eeef25a3031c7e44dfded5e48f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for proper inheritance. <br /></td></tr>
+<tr class="separator:ab01f36eeef25a3031c7e44dfded5e48f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a251657271f6dc06da028d0fb9e9380f3" id="r_a251657271f6dc06da028d0fb9e9380f3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a251657271f6dc06da028d0fb9e9380f3">Update</a> ()</td></tr>
+<tr class="memdesc:a251657271f6dc06da028d0fb9e9380f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the ImGui UI elements.  <br /></td></tr>
 <tr class="separator:a251657271f6dc06da028d0fb9e9380f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:add84697eb339f06fc4a0c4000ac93a6f" id="r_add84697eb339f06fc4a0c4000ac93a6f"><td class="memItemLeft" align="right" valign="top"><a id="add84697eb339f06fc4a0c4000ac93a6f" name="add84697eb339f06fc4a0c4000ac93a6f"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>Init</b> (GLFWwindow *window, const char *glsl_version)</td></tr>
+<tr class="memitem:add84697eb339f06fc4a0c4000ac93a6f" id="r_add84697eb339f06fc4a0c4000ac93a6f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add84697eb339f06fc4a0c4000ac93a6f">Init</a> (GLFWwindow *window, const char *glsl_version)</td></tr>
+<tr class="memdesc:add84697eb339f06fc4a0c4000ac93a6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes ImGui with GLFW and OpenGL.  <br /></td></tr>
 <tr class="separator:add84697eb339f06fc4a0c4000ac93a6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afdd1bcf8a243c3909f1741be360c64be" id="r_afdd1bcf8a243c3909f1741be360c64be"><td class="memItemLeft" align="right" valign="top"><a id="afdd1bcf8a243c3909f1741be360c64be" name="afdd1bcf8a243c3909f1741be360c64be"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>NewFrame</b> ()</td></tr>
+<tr class="memitem:afdd1bcf8a243c3909f1741be360c64be" id="r_afdd1bcf8a243c3909f1741be360c64be"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afdd1bcf8a243c3909f1741be360c64be">NewFrame</a> ()</td></tr>
+<tr class="memdesc:afdd1bcf8a243c3909f1741be360c64be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Begins a new ImGui frame.  <br /></td></tr>
 <tr class="separator:afdd1bcf8a243c3909f1741be360c64be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac16007ac2fdb722f07033e4bdb100d3d" id="r_ac16007ac2fdb722f07033e4bdb100d3d"><td class="memItemLeft" align="right" valign="top"><a id="ac16007ac2fdb722f07033e4bdb100d3d" name="ac16007ac2fdb722f07033e4bdb100d3d"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>Render</b> ()</td></tr>
+<tr class="memitem:ac16007ac2fdb722f07033e4bdb100d3d" id="r_ac16007ac2fdb722f07033e4bdb100d3d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac16007ac2fdb722f07033e4bdb100d3d">Render</a> ()</td></tr>
+<tr class="memdesc:ac16007ac2fdb722f07033e4bdb100d3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders ImGui elements to the screen.  <br /></td></tr>
 <tr class="separator:ac16007ac2fdb722f07033e4bdb100d3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17344082441a8968621d2a1014f02d8a" id="r_a17344082441a8968621d2a1014f02d8a"><td class="memItemLeft" align="right" valign="top"><a id="a17344082441a8968621d2a1014f02d8a" name="a17344082441a8968621d2a1014f02d8a"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>Shutdown</b> ()</td></tr>
+<tr class="memitem:a17344082441a8968621d2a1014f02d8a" id="r_a17344082441a8968621d2a1014f02d8a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a17344082441a8968621d2a1014f02d8a">Shutdown</a> ()</td></tr>
+<tr class="memdesc:a17344082441a8968621d2a1014f02d8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cleans up ImGui resources.  <br /></td></tr>
 <tr class="separator:a17344082441a8968621d2a1014f02d8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Base class providing ImGui initialization and lifecycle management. </p>
+<p>Handles the setup, frame management, rendering, and shutdown of ImGui. Provides a virtual Update method for derived classes. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="add84697eb339f06fc4a0c4000ac93a6f" name="add84697eb339f06fc4a0c4000ac93a6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add84697eb339f06fc4a0c4000ac93a6f">&#9670;&#160;</a></span>Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UseImGui::Init </td>
+          <td>(</td>
+          <td class="paramtype">GLFWwindow *</td>          <td class="paramname"><span class="paramname"><em>window</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>glsl_version</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Initializes ImGui with GLFW and OpenGL. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">window</td><td>Pointer to the GLFW window </td></tr>
+    <tr><td class="paramname">glsl_version</td><td>OpenGL shader version string </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="afdd1bcf8a243c3909f1741be360c64be" name="afdd1bcf8a243c3909f1741be360c64be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdd1bcf8a243c3909f1741be360c64be">&#9670;&#160;</a></span>NewFrame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UseImGui::NewFrame </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Begins a new ImGui frame. </p>
+<p>Should be called at the beginning of each render loop iteration </p>
+
+</div>
+</div>
+<a id="ac16007ac2fdb722f07033e4bdb100d3d" name="ac16007ac2fdb722f07033e4bdb100d3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac16007ac2fdb722f07033e4bdb100d3d">&#9670;&#160;</a></span>Render()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UseImGui::Render </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Renders ImGui elements to the screen. </p>
+<p>Should be called after all UI elements are defined </p>
+
+</div>
+</div>
+<a id="a17344082441a8968621d2a1014f02d8a" name="a17344082441a8968621d2a1014f02d8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17344082441a8968621d2a1014f02d8a">&#9670;&#160;</a></span>Shutdown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UseImGui::Shutdown </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Cleans up ImGui resources. </p>
+<p>Should be called before application termination </p>
+
+</div>
+</div>
+<a id="a251657271f6dc06da028d0fb9e9380f3" name="a251657271f6dc06da028d0fb9e9380f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a251657271f6dc06da028d0fb9e9380f3">&#9670;&#160;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UseImGui::Update </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Updates the ImGui UI elements. </p>
+<p>Virtual method to be implemented by childer classes </p>
+
+<p>Reimplemented in <a class="el" href="classCustomImGui.html#a1b0f2c45b291963be11b58f535c9f3e1">CustomImGui</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/szymon/CLionProjects/weather-app-2/<a class="el" href="UseImGui_8h_source.html">UseImGui.h</a></li>
 <li>/home/szymon/CLionProjects/weather-app-2/<b>UseImGui.cpp</b></li>

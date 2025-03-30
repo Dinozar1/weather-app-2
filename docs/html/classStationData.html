@@ -111,44 +111,282 @@ $(function(){initNavTree('classStationData.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">StationData Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Provides class for storing <a class="el" href="structStationData_1_1Station.html" title="Represents a Station in GIOS api system.">Station</a> information and geolocation features.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="StationData_8h_source.html">StationData.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structStationData_1_1GeoCoordinates.html">GeoCoordinates</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a geographical position of the station.  <a href="structStationData_1_1GeoCoordinates.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structStationData_1_1Station.html">Station</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a <a class="el" href="structStationData_1_1Station.html" title="Represents a Station in GIOS api system.">Station</a> in GIOS api system.  <a href="structStationData_1_1Station.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:af369b3a156f6a0a91f7f298585cc1722" id="r_af369b3a156f6a0a91f7f298585cc1722"><td class="memItemLeft" align="right" valign="top"><a id="af369b3a156f6a0a91f7f298585cc1722" name="af369b3a156f6a0a91f7f298585cc1722"></a>
-static string&#160;</td><td class="memItemRight" valign="bottom"><b>FetchStations</b> (const string &amp;uri)</td></tr>
+<tr class="memitem:af369b3a156f6a0a91f7f298585cc1722" id="r_af369b3a156f6a0a91f7f298585cc1722"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af369b3a156f6a0a91f7f298585cc1722">FetchStations</a> (const string &amp;uri)</td></tr>
+<tr class="memdesc:af369b3a156f6a0a91f7f298585cc1722"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches station data from the specified URI.  <br /></td></tr>
 <tr class="separator:af369b3a156f6a0a91f7f298585cc1722"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4223cd881cdde9f1b88152f09bcea605" id="r_a4223cd881cdde9f1b88152f09bcea605"><td class="memItemLeft" align="right" valign="top"><a id="a4223cd881cdde9f1b88152f09bcea605" name="a4223cd881cdde9f1b88152f09bcea605"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>ParseStations</b> (const string &amp;jsonStr)</td></tr>
+<tr class="memitem:a4223cd881cdde9f1b88152f09bcea605" id="r_a4223cd881cdde9f1b88152f09bcea605"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4223cd881cdde9f1b88152f09bcea605">ParseStations</a> (const string &amp;jsonStr)</td></tr>
+<tr class="memdesc:a4223cd881cdde9f1b88152f09bcea605"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses JSON string containing station data.  <br /></td></tr>
 <tr class="separator:a4223cd881cdde9f1b88152f09bcea605"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9264ec34d1a92b6429039fe3389dba9e" id="r_a9264ec34d1a92b6429039fe3389dba9e"><td class="memItemLeft" align="right" valign="top"><a id="a9264ec34d1a92b6429039fe3389dba9e" name="a9264ec34d1a92b6429039fe3389dba9e"></a>
-static size_t&#160;</td><td class="memItemRight" valign="bottom"><b>WriteCallback</b> (void *contents, size_t size, size_t nmemb, void *user)</td></tr>
+<tr class="memitem:a9264ec34d1a92b6429039fe3389dba9e" id="r_a9264ec34d1a92b6429039fe3389dba9e"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9264ec34d1a92b6429039fe3389dba9e">WriteCallback</a> (void *contents, size_t size, size_t nmemb, void *user)</td></tr>
+<tr class="memdesc:a9264ec34d1a92b6429039fe3389dba9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function for libcurl to handle received data.  <br /></td></tr>
 <tr class="separator:a9264ec34d1a92b6429039fe3389dba9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a06a405b5c450c2fa1f3669bd3f1342b6" id="r_a06a405b5c450c2fa1f3669bd3f1342b6"><td class="memItemLeft" align="right" valign="top"><a id="a06a405b5c450c2fa1f3669bd3f1342b6" name="a06a405b5c450c2fa1f3669bd3f1342b6"></a>
-static double&#160;</td><td class="memItemRight" valign="bottom"><b>CalculateDistance</b> (double lat1, double lon1, double lat2, double lon2)</td></tr>
+<tr class="memitem:a06a405b5c450c2fa1f3669bd3f1342b6" id="r_a06a405b5c450c2fa1f3669bd3f1342b6"><td class="memItemLeft" align="right" valign="top">static double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a06a405b5c450c2fa1f3669bd3f1342b6">CalculateDistance</a> (double lat1, double lon1, double lat2, double lon2)</td></tr>
+<tr class="memdesc:a06a405b5c450c2fa1f3669bd3f1342b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the distance between two geographical points.  <br /></td></tr>
 <tr class="separator:a06a405b5c450c2fa1f3669bd3f1342b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6fb1cbf8328a05bea270587b254bfb2d" id="r_a6fb1cbf8328a05bea270587b254bfb2d"><td class="memItemLeft" align="right" valign="top"><a id="a6fb1cbf8328a05bea270587b254bfb2d" name="a6fb1cbf8328a05bea270587b254bfb2d"></a>
-static <a class="el" href="structStationData_1_1GeoCoordinates.html">GeoCoordinates</a>&#160;</td><td class="memItemRight" valign="bottom"><b>GeocodeAddress</b> (const std::string &amp;address)</td></tr>
+<tr class="memitem:a6fb1cbf8328a05bea270587b254bfb2d" id="r_a6fb1cbf8328a05bea270587b254bfb2d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structStationData_1_1GeoCoordinates.html">GeoCoordinates</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6fb1cbf8328a05bea270587b254bfb2d">GeocodeAddress</a> (const std::string &amp;address)</td></tr>
+<tr class="memdesc:a6fb1cbf8328a05bea270587b254bfb2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts an address string to geographical coordinates using openstrees api.  <br /></td></tr>
 <tr class="separator:a6fb1cbf8328a05bea270587b254bfb2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:a4fa033a2e80650d718a76de64dea9bd7" id="r_a4fa033a2e80650d718a76de64dea9bd7"><td class="memItemLeft" align="right" valign="top"><a id="a4fa033a2e80650d718a76de64dea9bd7" name="a4fa033a2e80650d718a76de64dea9bd7"></a>
 static vector&lt; <a class="el" href="structStationData_1_1Station.html">Station</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>stations</b></td></tr>
+<tr class="memdesc:a4fa033a2e80650d718a76de64dea9bd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Collection of all stations. <br /></td></tr>
 <tr class="separator:a4fa033a2e80650d718a76de64dea9bd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
 Friends</h2></td></tr>
-<tr class="memitem:a26561d949023bcc6a121413da0d9966e" id="r_a26561d949023bcc6a121413da0d9966e"><td class="memItemLeft" align="right" valign="top"><a id="a26561d949023bcc6a121413da0d9966e" name="a26561d949023bcc6a121413da0d9966e"></a>
-class&#160;</td><td class="memItemRight" valign="bottom"><b>SensorData</b></td></tr>
+<tr class="memitem:a26561d949023bcc6a121413da0d9966e" id="r_a26561d949023bcc6a121413da0d9966e"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a26561d949023bcc6a121413da0d9966e">SensorData</a></td></tr>
 <tr class="separator:a26561d949023bcc6a121413da0d9966e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Provides class for storing <a class="el" href="structStationData_1_1Station.html" title="Represents a Station in GIOS api system.">Station</a> information and geolocation features. </p>
+<p>Provides struct for <a class="el" href="structStationData_1_1Station.html" title="Represents a Station in GIOS api system.">Station</a> data and struct for geolocation data, provides methods for fetching api and parsing data to json format and methods for geolocation purposes </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a06a405b5c450c2fa1f3669bd3f1342b6" name="a06a405b5c450c2fa1f3669bd3f1342b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06a405b5c450c2fa1f3669bd3f1342b6">&#9670;&#160;</a></span>CalculateDistance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double StationData::CalculateDistance </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>lat1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>lon1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>lat2</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>lon2</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Calculates the distance between two geographical points. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lat1</td><td>Latitude of the first point </td></tr>
+    <tr><td class="paramname">lon1</td><td>Longitude of the first point </td></tr>
+    <tr><td class="paramname">lat2</td><td>Latitude of the second point </td></tr>
+    <tr><td class="paramname">lon2</td><td>Longitude of the second point </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Distance in kilometers </dd></dl>
+
+</div>
+</div>
+<a id="af369b3a156f6a0a91f7f298585cc1722" name="af369b3a156f6a0a91f7f298585cc1722"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af369b3a156f6a0a91f7f298585cc1722">&#9670;&#160;</a></span>FetchStations()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string StationData::FetchStations </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;</td>          <td class="paramname"><span class="paramname"><em>uri</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Fetches station data from the specified URI. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">uri</td><td>The URI endpoint to fetch data from </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>JSON string containing station data or empty string on failure </dd></dl>
+
+</div>
+</div>
+<a id="a6fb1cbf8328a05bea270587b254bfb2d" name="a6fb1cbf8328a05bea270587b254bfb2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fb1cbf8328a05bea270587b254bfb2d">&#9670;&#160;</a></span>GeocodeAddress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structStationData_1_1GeoCoordinates.html">StationData::GeoCoordinates</a> StationData::GeocodeAddress </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>address</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Converts an address string to geographical coordinates using openstrees api. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">address</td><td>The address from input </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structStationData_1_1GeoCoordinates.html" title="Represents a geographical position of the station.">GeoCoordinates</a> structure containing latitude, longitude and validation </dd></dl>
+
+</div>
+</div>
+<a id="a4223cd881cdde9f1b88152f09bcea605" name="a4223cd881cdde9f1b88152f09bcea605"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4223cd881cdde9f1b88152f09bcea605">&#9670;&#160;</a></span>ParseStations()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void StationData::ParseStations </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;</td>          <td class="paramname"><span class="paramname"><em>jsonStr</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Parses JSON string containing station data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">jsonStr</td><td>from the return of FetchStation method </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9264ec34d1a92b6429039fe3389dba9e" name="a9264ec34d1a92b6429039fe3389dba9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9264ec34d1a92b6429039fe3389dba9e">&#9670;&#160;</a></span>WriteCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t StationData::WriteCallback </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>contents</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>nmemb</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>user</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Callback function for libcurl to handle received data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">contents</td><td>Pointer to the received data </td></tr>
+    <tr><td class="paramname">size</td><td>Size of each data element </td></tr>
+    <tr><td class="paramname">nmemb</td><td>Number of data elements </td></tr>
+    <tr><td class="paramname">user</td><td>Pointer to user data (string buffer) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Total size of processed data </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Symbol Documentation</h2>
+<a id="a26561d949023bcc6a121413da0d9966e" name="a26561d949023bcc6a121413da0d9966e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26561d949023bcc6a121413da0d9966e">&#9670;&#160;</a></span>SensorData</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class SensorData</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel friend">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Allows SensorData class to access private members </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/szymon/CLionProjects/weather-app-2/api/<a class="el" href="StationData_8h_source.html">StationData.h</a></li>
 <li>/home/szymon/CLionProjects/weather-app-2/api/<b>GeoLocation.cpp</b></li>

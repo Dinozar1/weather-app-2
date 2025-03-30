@@ -1,3 +1,11 @@
+
+/**
+ * @file StationData.cpp
+ * @brief Implementation of the StationData class for geocoding and distance calculations of stations
+ * @details This file contains source of geolocations methods of StationData class, it provides distance calculator between
+ *  two objects and method that provides geolocation of a address
+ */
+
 #include "StationData.h"
 #include <curl/curl.h>
 #include <nlohmann/json.hpp>
@@ -6,33 +14,47 @@
 using namespace nlohmann;
 using namespace std;
 
+/**
+ * @brief Calculates the distance between two points on Earth
+ * @details Uses the Haversine formula to calculate the shortest distance over
+ *          the Earth surface between two points specified by their latitude
+ *          and longitude.
+ *
+ * @param lat1 Latitude of the first point in degrees
+ * @param lon1 Longitude of the first point in degrees
+ * @param lat2 Latitude of the second point in degrees
+ * @param lon2 Longitude of the second point in degrees
+ * @return double Distance between the two points in kilometers
+ */
+
 double StationData::CalculateDistance(double lat1, double lon1, double lat2, double lon2) {
-    constexpr double R = 6371.0; // Earth radius in km
+    //https://www.geeksforgeeks.org/haversine-formula-to-find-distance-between-two-points-on-a-sphere/
 
-    // Convert degrees to radians
-    auto toRad = [](const double deg) { return deg * M_PI / 180.0; }; //lambda function that will convert to radians
-    lat1 = toRad(lat1);
-    lon1 = toRad(lon1);
-    lat2 = toRad(lat2);
-    lon2 = toRad(lon2);
+    // distance between latitudes and longitudes
+    double dLat = (lat2 - lat1) * M_PI / 180.0; // fi2 - fi1
+    double dLon = (lon2 - lon1) * M_PI / 180.0; // lambda2 - lambda1
 
-    // Haversine formula
-    // 1. difference in distance
-    const double dlat = lat2 - lat1;
-    const double dlon = lon2 - lon1;
+    // convert to radians
+    lat1 = (lat1) * M_PI / 180.0;
+    lat2 = (lat2) * M_PI / 180.0;
 
-    // 2. Haversine Calculation
-    const double a = std::sin(dlat/2) * std::sin(dlat/2) +
-              std::cos(lat1) * std::cos(lat2) *
-              std::sin(dlon/2) * std::sin(dlon/2);
+    // apply formulae
+    double a = pow(sin(dLat / 2), 2) + cos(lat1) * cos(lat2) * pow(sin(dLon / 2), 2);
 
-    // 3. Central Angle Calculation
-    const double c = 2 * std::atan2(std::sqrt(a), std::sqrt(1-a));
+    double rad = 6371.0; // Earth radius in kilometers
 
-    // 4. Multiplies the central angle by the Earth's radius
-    return R * c;
+    return rad * 2 * asin(sqrt(a));
 }
 
+/**
+ * @brief Converts a street address to geographic coordinates
+ * @details Uses the OpenStreetMap Nominatim API to geocode a given address
+ *          string into latitude and longitude coordinates.
+ *
+ * @param address The address string to geocode
+ * @return StationData::GeoCoordinates A structure containing latitude, longitude,
+ *         and a flag indicating whether the geocoding was successful
+ */
 
 StationData::GeoCoordinates StationData::GeocodeAddress(const string &address) {
     GeoCoordinates coords; // Default constructor sets valid=false
