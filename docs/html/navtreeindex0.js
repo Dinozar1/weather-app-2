@@ -1,0 +1,22 @@
+var NAVTREEINDEX0 =
+{
+"SensorsData_8h_source.html":[1,0,0,0],
+"StationData_8h.html":[1,0,0,1],
+"StationData_8h_source.html":[1,0,0,1],
+"UseImGui_8h_source.html":[1,0,1],
+"annotated.html":[0,0],
+"classCustomImGui.html":[0,0,0],
+"classSensorsData.html":[0,0,1],
+"classStationData.html":[0,0,2],
+"classUseImGui.html":[0,0,3],
+"classes.html":[0,1],
+"dir_0188a3e6da905bc60aceb35bf790b8c9.html":[1,0,0],
+"files.html":[1,0],
+"hierarchy.html":[0,2],
+"index.html":[],
+"pages.html":[],
+"structSensorsData_1_1Sensor.html":[0,0,1,0],
+"structSensorsData_1_1SensorValue.html":[0,0,1,1],
+"structStationData_1_1GeoCoordinates.html":[0,0,2,0],
+"structStationData_1_1Station.html":[0,0,2,1]
+};

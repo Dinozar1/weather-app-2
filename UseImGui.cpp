@@ -535,7 +535,22 @@ void CustomImGui::FetchStationSensors(const int stationId) {
 
     const string sensorsJsonStr = StationData::FetchStations(sensorsUrl);
 
-    if (!sensorsJsonStr.empty()) SensorsData::ParseSensorData(sensorsJsonStr);
+    if (sensorsJsonStr.empty()) {
+        // Handle API fetch failure
+        ImGui::OpenPopup("API Error");
+        return;
+    }
+
+    if (!SensorsData::ParseSensorData(sensorsJsonStr)) {
+        // Handle parsing failure
+        ImGui::OpenPopup("Parsing Error");
+        return;
+    }
+
+    // Check if we actually got any sensors
+    if (SensorsData::sensors.empty()) {
+        ImGui::OpenPopup("No Sensors");
+    }
 
 
 }
@@ -549,5 +564,28 @@ void CustomImGui::FetchSensorValues(const int sensorId) {
 
     const string valuesOfSensor = StationData::FetchStations(valuesUrl);
 
-    if (!valuesOfSensor.empty()) SensorsData::ParseSensorValues(valuesOfSensor);
+    if (valuesOfSensor.empty()) {
+        // Handle API fetch failure
+        ImGui::OpenPopup("API Error");
+        return;
+    }
+
+    if (!SensorsData::ParseSensorValues(valuesOfSensor)) {
+        // Handle parsing failure
+        ImGui::OpenPopup("Parsing Error");
+        return;
+    }
+
+    // Check if we got any values
+    bool hasValues = false;
+    for (const auto& sensor : SensorsData::sensors) {
+        if (!sensor.sensorsValues.empty()) {
+            hasValues = true;
+            break;
+        }
+    }
+
+    if (!hasValues) {
+        ImGui::OpenPopup("No Sensor Values");
+    }
 }

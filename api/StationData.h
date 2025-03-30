@@ -1,11 +1,15 @@
+/**
+ * @file StationData.h
+ * @brief Provides class for Stations objects
+ * @details Provides functionality for fetching storing and calculationig geolocation distances between stations and OpenStreet addresses
+ */
+
 #pragma once
 
 #include <iostream>
 #include <optional>
 #include <string>
 #include <vector>
-
-
 
 using namespace std;
 
