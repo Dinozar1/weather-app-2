@@ -53,16 +53,10 @@ StationData::GeoCoordinates StationData::GeocodeAddress(const string &address) {
         return coords;
     }
 
-    // Debug: print the encoded address
-    cout << "Encoded Address: " << encoded_address << endl;
-
     // Construct URL - use full URL encoding
     string url = "https://nominatim.openstreetmap.org/search?";
     url += "q=" + string(encoded_address);
     url += "&format=json&limit=1";
-
-    // Debug: print the full URL
-    cout << "Full URL: " << url << endl;
 
     // Prepare headers
     curl_slist* headers = nullptr;

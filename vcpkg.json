@@ -6,5 +6,5 @@
       "name":  "imgui",
       "features": ["glfw-binding", "opengl3-binding"]
     }
-    , "glfw3", "glad", "curl", "nlohmann-json", "implot" ]
+    , "glfw3", "glad", "curl", "nlohmann-json", "implot", "gtest"]
 }

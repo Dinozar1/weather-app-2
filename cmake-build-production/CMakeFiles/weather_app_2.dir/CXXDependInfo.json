@@ -1,0 +1,21 @@
+{
+	"bmi-installation" : null,
+	"compiler-frontend-variant" : "GNU",
+	"compiler-id" : "GNU",
+	"compiler-simulate-id" : "",
+	"config" : "RelWithDebInfo",
+	"cxx-modules" : {},
+	"dir-cur-bld" : "/home/szymon/CLionProjects/weather-app-2/cmake-build-production",
+	"dir-cur-src" : "/home/szymon/CLionProjects/weather-app-2",
+	"dir-top-bld" : "/home/szymon/CLionProjects/weather-app-2/cmake-build-production",
+	"dir-top-src" : "/home/szymon/CLionProjects/weather-app-2",
+	"exports" : [],
+	"forward-modules-from-target-dirs" : [],
+	"include-dirs" : 
+	[
+		"vcpkg_installed/x64-linux/include"
+	],
+	"language" : "CXX",
+	"linked-target-dirs" : [],
+	"module-dir" : "/home/szymon/CLionProjects/weather-app-2/cmake-build-production/CMakeFiles/weather_app_2.dir"
+}

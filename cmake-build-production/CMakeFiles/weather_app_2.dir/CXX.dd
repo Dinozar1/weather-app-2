@@ -1,0 +1,11 @@
+ninja_dyndep_version = 1.0
+build CMakeFiles/weather_app_2.dir/main.cpp.o: dyndep
+
+build CMakeFiles/weather_app_2.dir/UseImGui.cpp.o: dyndep
+
+build CMakeFiles/weather_app_2.dir/api/StationData.cpp.o: dyndep
+
+build CMakeFiles/weather_app_2.dir/api/GeoLocation.cpp.o: dyndep
+
+build CMakeFiles/weather_app_2.dir/api/SensorsData.cpp.o: dyndep
+
