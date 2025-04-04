@@ -1,5 +1,0 @@
-/home/szymon/CLionProjects/weather-app-2/cmake-build-production/CMakeFiles/weather_app_2.dir
-/home/szymon/CLionProjects/weather-app-2/cmake-build-production/CMakeFiles/station_data_test.dir
-/home/szymon/CLionProjects/weather-app-2/cmake-build-production/CMakeFiles/test.dir
-/home/szymon/CLionProjects/weather-app-2/cmake-build-production/CMakeFiles/edit_cache.dir
-/home/szymon/CLionProjects/weather-app-2/cmake-build-production/CMakeFiles/rebuild_cache.dir
