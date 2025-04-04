@@ -73,14 +73,32 @@ cd vcpkg
 ./vcpkg install
 ```
 
+## Windows setup
+1. Install vcpkg
+```bash
+git clone https://github.com/Microsoft/vcpkg.git
+cd vcpkg
+.\bootstrap-vcpkg.bat
+```
+
+2. Install project dependencies via vcpkg
+```bash
+.\vcpkg integrate install
+```
+
 
 ## IDE configuration
 For cmake add path to vcpkg.cmake in build options
 ```
--DCMAKE_TOOLCHAIN_FILE=/path/to/project/vcpkg/scripts/buildsystems/vcpkg.cmake
+-DCMAKE_TOOLCHAIN_FILE=/home/$USER/vcpkg/scripts/buildsystems/vcpkg.cmake
 ```
 
 ## API References
 - GIOS Air Quality API: https://powietrze.gios.gov.pl/pjp/content/api
 - OpenStreetMap Nominatim: https://nominatim.openstreetmap.org/
-  
+
+## Troubleshooting
+
+- Ensure all dependencies are correctly installed
+- Check internet connectivity for API requests
+- Verify vcpkg toolchain is correctly configured
