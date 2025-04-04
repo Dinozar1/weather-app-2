@@ -1,6 +1,7 @@
 # C++ build directories
 cmake-build-debug/
 cmake-build-release/
+cmake-build-production/
 build/
 
 # IDE files
@@ -14,4 +15,5 @@ build/
 
 # Dependency directories
 vcpkg/
+vcpkg_installed/
 LocalDataBase.json
