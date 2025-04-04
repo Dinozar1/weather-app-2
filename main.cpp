@@ -3,8 +3,23 @@
 #include "api/StationData.h"
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
+#include <thread>
+#include <mutex>
+
 
 using namespace std;
+
+// Mutex for access synchronization
+mutex stationsMutex;
+
+
+void fetchStationsInBackground() {
+    const string jsonResponse = StationData::FetchStations("https://api.gios.gov.pl/pjp-api/rest/station/findAll");
+
+    // blocking access
+    lock_guard lock(stationsMutex);
+    StationData::ParseStations(jsonResponse);
+}
 
 int main() {
     // GLFW Initialization
@@ -43,8 +58,8 @@ int main() {
     CustomImGui myimgui;  // Create an instance of custom ImGui wrapper
     CustomImGui::Init(window, glsl_version);  // Initialize ImGui with window and GLSL version
 
-    const string jsonResponse = StationData::FetchStations("https://api.gios.gov.pl/pjp-api/rest/station/findAll");
-    StationData::ParseStations(jsonResponse);
+    thread stationsThread(fetchStationsInBackground);
+    stationsThread.detach();
 
     // Main Rendering Loop
     while (!glfwWindowShouldClose(window)) {  // Continue until window close is requested
@@ -53,7 +68,10 @@ int main() {
         glClear(GL_COLOR_BUFFER_BIT);  // Clear the color buffer
 
         CustomImGui::NewFrame();  // Start a new ImGui frame
-        myimgui.Update();    // Update ImGui content
+        {
+            lock_guard lock(stationsMutex);
+            myimgui.Update();    // Update ImGui content
+        }   // Update ImGui content
         CustomImGui::Render();    // Render ImGui elements
 
         glfwSwapBuffers(window);  // Swap front and back buffers

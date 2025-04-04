@@ -80,7 +80,7 @@ TEST(StationData, InvalidLatitudes) {
     
     // The result should be a number (not NaN or infinity)
     EXPECT_FALSE(isnan(distance)); //https://en.cppreference.com/w/cpp/numeric/math/isnan
-    EXPECT_FALSE(isinf(distance));
+    EXPECT_FALSE(isinf(distance));//https://en.cppreference.com/w/cpp/numeric/math/isinf
 }
 
 // Test with invalid input
