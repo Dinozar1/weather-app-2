@@ -205,6 +205,137 @@ void CustomImGui::Update() {
 
 
     ShowStationSensorsWindow();
+
+    ImGui::SetCursorPos(ImVec2(10, ImGui::GetWindowSize().y - 40)); //static button place
+    if (ImGui::Button("Browse local data")) {
+        // Load data from LocalDataBase.json
+        path dataBasePath = "../LocalDataBase.json";
+        if (exists(dataBasePath)) {
+            ifstream file(dataBasePath);
+            try {
+                file >> localDatabase;
+                showLocalDataWindow = true;
+            } catch (const json::exception& e) {
+                ImGui::OpenPopup("JSON Error");
+            }
+            file.close();
+        } else {
+            ImGui::OpenPopup("File Not Found");
+        }
+    }
+
+    // Error popup for file not found
+    if (ImGui::BeginPopupModal("File Not Found", nullptr, ImGuiWindowFlags_AlwaysAutoResize)) {
+        ImGui::Text("Database not created.");
+        if (ImGui::Button("Close")) {
+            ImGui::CloseCurrentPopup();
+        }
+        ImGui::EndPopup();
+    }
+
+
+    // Call the method to show local data window if enabled
+    ShowLocalDataWindow();
+    ImGui::End();
+}
+
+void CustomImGui::ShowLocalDataWindow() {
+    if (!showLocalDataWindow) return;
+
+    bool isOpen = true;
+    ImGui::Begin("Local Data Browser", &isOpen, ImGuiWindowFlags_NoCollapse);
+
+    if (!isOpen) {
+        showLocalDataWindow = false;
+    }
+
+    ImGui::Text("Locally Stored Air Quality Data");
+    ImGui::Separator();
+
+    constexpr ImGuiTableFlags tableFlags =
+        ImGuiTableFlags_BordersOuter |
+        ImGuiTableFlags_BordersV |
+        ImGuiTableFlags_RowBg |
+        ImGuiTableFlags_Resizable;
+
+    if (ImGui::BeginTable("LocalStationsData", 6, tableFlags)) {
+        // Table headers
+        ImGui::TableSetupScrollFreeze(0, 1);
+        ImGui::TableNextColumn();
+        ImGui::TableHeader("Station Name");
+        ImGui::TableNextColumn();
+        ImGui::TableHeader("City");
+        ImGui::TableNextColumn();
+        ImGui::TableHeader("Station ID");
+        ImGui::TableNextColumn();
+        ImGui::TableHeader("Sensor ID");
+        ImGui::TableNextColumn();
+        ImGui::TableHeader("Parameter");
+        ImGui::TableNextColumn();
+        ImGui::TableHeader("Formula");
+
+        int recordId = 0;
+        for (const auto& record : localDatabase) {
+            ImGui::TableNextRow();
+
+            const string stationName = record["stationName"];
+            const string cityName = record["cityName"];
+            const int stationId = record["stationId"];
+            const int sensorId = record["sensorId"];
+            const string paramName = record["paramName"];
+            const string paramFormula = record["paramFormula"];
+
+            // First column with expand/collapse control
+            ImGui::TableNextColumn();
+            string rowId = "##row" + to_string(recordId);
+
+            if (ImGui::TreeNode((stationName + rowId).c_str())) { //create an expandable tree node for each row, stationName+rowId is unique id
+                expandedRecords[recordId] = true;
+
+                // If expanded, show the values in a nested table
+                if (ImGui::BeginTable("SensorValues", 2, tableFlags, ImVec2(ImGui::GetContentRegionAvail().x, 0))) {
+                    ImGui::TableSetupColumn("Date");
+                    ImGui::TableSetupColumn("Value");
+                    ImGui::TableHeadersRow();
+
+                    for (const auto& value : record["sensorValues"]) {
+                        ImGui::TableNextRow();
+                        ImGui::TableNextColumn();
+                        ImGui::Text("%s", value["date"].get<string>().c_str());
+                        ImGui::TableNextColumn();
+                        ImGui::Text("%.2f", value["value"].get<double>());
+                    }
+
+                    ImGui::EndTable();
+                }
+
+                ImGui::TreePop();
+            } else {
+                expandedRecords[recordId] = false;
+            }
+
+            // Other columns
+            ImGui::TableNextColumn();
+            ImGui::Text("%s", cityName.c_str());
+
+            ImGui::TableNextColumn();
+            ImGui::Text("%d", stationId);
+
+            ImGui::TableNextColumn();
+            ImGui::Text("%d", sensorId);
+
+            ImGui::TableNextColumn();
+            ImGui::Text("%s", paramName.c_str());
+
+            ImGui::TableNextColumn();
+            ImGui::Text("%s", paramFormula.c_str());
+
+            recordId++;
+        }
+
+        ImGui::EndTable();
+    }
+
     ImGui::End();
 }
 
@@ -510,7 +641,7 @@ void CustomImGui::ShowStationSensorsWindow() {
                     file.close();
                 }
 
-                // if it's empty add a empty array
+                // if it's empty add empty array
                 if (database.is_null()) {
                     database = json::array();
                 }
@@ -532,63 +663,71 @@ void CustomImGui::ShowStationSensorsWindow() {
     }
 
 void CustomImGui::FetchStationSensors(const int stationId) {
-    SensorsData::sensors.clear();
+    // create a thread and fetch data
+    thread sensorThread([stationId]() {
+        SensorsData::sensors.clear();
 
-    const string sensorsUrl = "https://api.gios.gov.pl/pjp-api/rest/station/sensors/" + to_string(stationId);
+        const string sensorsUrl = "https://api.gios.gov.pl/pjp-api/rest/station/sensors/" + to_string(stationId);
+        const string sensorsJsonStr = StationData::FetchStations(sensorsUrl);
 
-    const string sensorsJsonStr = StationData::FetchStations(sensorsUrl);
-
-    if (sensorsJsonStr.empty()) {
+        if (sensorsJsonStr.empty()) {
         // Handle API fetch failure
         ImGui::OpenPopup("API Error");
         return;
-    }
+        }
 
-    if (!SensorsData::ParseSensorData(sensorsJsonStr)) {
-        // Handle parsing failure
-        ImGui::OpenPopup("Parsing Error");
-        return;
-    }
+        if (!SensorsData::ParseSensorData(sensorsJsonStr)) {
+            // Handle parsing failure
+            ImGui::OpenPopup("Parsing Error");
+            return;
+        }
 
-    // Check if we actually got any sensors
-    if (SensorsData::sensors.empty()) {
-        ImGui::OpenPopup("No Sensors");
-    }
+        // Check if we actually got any sensors
+        if (SensorsData::sensors.empty()) {
+            ImGui::OpenPopup("No Sensors");
+        }
+    });
 
-
+    // we need the data before displaying the sensors window so using join() to wait for the thread to complete
+    sensorThread.join();
 }
 
 void CustomImGui::FetchSensorValues(const int sensorId) {
-    for (auto& sensor : SensorsData::sensors) {
-        sensor.sensorsValues.clear();
-    }
-
-    const string valuesUrl = "https://api.gios.gov.pl/pjp-api/rest/data/getData/" + to_string(sensorId);
-
-    const string valuesOfSensor = StationData::FetchStations(valuesUrl);
-
-    if (valuesOfSensor.empty()) {
-        // Handle API fetch failure
-        ImGui::OpenPopup("API Error");
-        return;
-    }
-
-    if (!SensorsData::ParseSensorValues(valuesOfSensor)) {
-        // Handle parsing failure
-        ImGui::OpenPopup("Parsing Error");
-        return;
-    }
-
-    // Check if we got any values
-    bool hasValues = false;
-    for (const auto& sensor : SensorsData::sensors) {
-        if (!sensor.sensorsValues.empty()) {
-            hasValues = true;
-            break;
+    // create a thread to fetch sensor values
+    thread valuesThread([sensorId]() { //anonymous function
+        for (auto& sensor : SensorsData::sensors) {
+            sensor.sensorsValues.clear();
         }
-    }
 
-    if (!hasValues) {
-        ImGui::OpenPopup("No Sensor Values");
-    }
+        const string valuesUrl = "https://api.gios.gov.pl/pjp-api/rest/data/getData/" + to_string(sensorId);
+        const string valuesOfSensor = StationData::FetchStations(valuesUrl);
+
+        if (valuesOfSensor.empty()) {
+            // Handle API fetch failure
+            ImGui::OpenPopup("API Error");
+            return;
+        }
+
+        if (!SensorsData::ParseSensorValues(valuesOfSensor)) {
+            // Handle parsing failure
+            ImGui::OpenPopup("Parsing Error");
+            return;
+        }
+
+        // Check if we got any values
+        bool hasValues = false;
+        for (const auto& sensor : SensorsData::sensors) {
+            if (!sensor.sensorsValues.empty()) {
+                hasValues = true;
+                break;
+            }
+        }
+
+        if (!hasValues) {
+            ImGui::OpenPopup("No Sensor Values");
+        }
+    });
+
+    // wait for the thread to complete
+    valuesThread.join();
 }

@@ -10,6 +10,9 @@
 #include <curl/curl.h>
 #include <nlohmann/json.hpp>
 #include <string>
+#include <thread>
+#include <mutex>
+#include <future>
 
 using namespace nlohmann;
 using namespace std;
@@ -39,70 +42,79 @@ StationData::GeoCoordinates StationData::GeocodeAddress(const string &address) {
 
     if (address.empty()) return coords; // Return invalid coords
 
-    CURL* curl = curl_easy_init(); // init curl
-    if (!curl) {
-        cerr << "Failed to initialize CURL" << endl;
-        return coords;
-    }
+    static mutex geocodeMutex;
 
-    // URL encoding
-    char* encoded_address = curl_easy_escape(curl, address.c_str(), 0);
-    if (!encoded_address) {
-        cerr << "Failed to URL encode address" << endl;
-        curl_easy_cleanup(curl);
-        return coords;
-    }
-
-    // Construct URL - use full URL encoding
-    string url = "https://nominatim.openstreetmap.org/search?";
-    url += "q=" + string(encoded_address);
-    url += "&format=json&limit=1";
-
-    // Prepare headers
-    curl_slist* headers = nullptr;
-    headers = curl_slist_append(headers, "User-Agent: AirQualityMonitor/1.0");
-
-    // Response storage
-    string response;
-
-    // Set curl options with careful checking
-    curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
-    curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
-    curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response);
-
-
-    // Perform request
-    const CURLcode res = curl_easy_perform(curl);
-
-    // Clean up
-    curl_slist_free_all(headers);
-    curl_free(encoded_address);
-    curl_easy_cleanup(curl);
-
-    // Check for request failure
-    if (res != CURLE_OK) {
-        cerr << "Curl request failed: " << curl_easy_strerror(res) << endl;
-        return coords;
-    }
-
-    // Rest of your JSON parsing code remains the same
-    try {
-        auto json = nlohmann::json::parse(response);
-        if (json.empty()) {
-            cerr << "No results found for the address" << endl;
+    // create a thread to fetch the geocode data
+    thread geocodeThread([&coords, &address]() {
+        CURL* curl = curl_easy_init(); // init curl
+        if (!curl) {
+            cerr << "Failed to initialize CURL" << endl;
             return coords;
         }
 
-        coords.latitude = stod(json[0]["lat"].get<string>());
-        coords.longitude = stod(json[0]["lon"].get<string>());
-        coords.valid = true;
-        return coords;
-    }
-    catch (const json::exception& e) {
-        cerr << "JSON parsing error: " << e.what() << endl;
-        cerr << "Response received: " << response << endl;
-    }
+        // URL encoding
+        char* encoded_address = curl_easy_escape(curl, address.c_str(), 0);
+        if (!encoded_address) {
+            cerr << "Failed to URL encode address" << endl;
+            curl_easy_cleanup(curl);
+            return coords;
+        }
+
+        // Construct URL - use full URL encoding
+        string url = "https://nominatim.openstreetmap.org/search?";
+        url += "q=" + string(encoded_address);
+        url += "&format=json&limit=1";
+
+        // Prepare headers
+        curl_slist* headers = nullptr;
+        headers = curl_slist_append(headers, "User-Agent: AirQualityMonitor/1.0");
+
+        // Response storage
+        string response;
+
+        // Set curl options with careful checking
+        curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+        curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response);
+
+
+        // Perform request
+        const CURLcode res = curl_easy_perform(curl);
+
+        // Clean up
+        curl_slist_free_all(headers);
+        curl_free(encoded_address);
+        curl_easy_cleanup(curl);
+
+        // Check for request failure
+        if (res != CURLE_OK) {
+            cerr << "Curl request failed: " << curl_easy_strerror(res) << endl;
+            return coords;
+        }
+
+        // Rest of your JSON parsing code remains the same
+        try {
+            auto json = nlohmann::json::parse(response);
+            if (json.empty()) {
+                cerr << "No results found for the address" << endl;
+                return coords;
+            }
+
+            coords.latitude = stod(json[0]["lat"].get<string>());
+            coords.longitude = stod(json[0]["lon"].get<string>());
+            coords.valid = true;
+            return coords;
+        }
+        catch (const json::exception& e) {
+            cerr << "JSON parsing error: " << e.what() << endl;
+            cerr << "Response received: " << response << endl;
+        }
+
+    });
+
+    // wait for the thread to complete before returning the coords
+    geocodeThread.join();
 
     return coords;
 }

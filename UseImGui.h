@@ -16,7 +16,10 @@
 #include <ranges>
 #include "./api/StationData.h"
 #include "api/SensorsData.h"
-
+#include <thread>
+#include <mutex>
+#include <nlohmann/json.hpp>
+#include <map>
 
 /**
  * @class UseImGui
@@ -71,6 +74,10 @@ public:
  * @details Provides a specific GUI for GIOŚ air quality application like rendering Stations, Sensors and sensors values with analitics
  */
 class CustomImGui final : public UseImGui {
+    mutex sensorsMutex;
+    mutex valuesMutex;
+
+
 public:
     /**
      * @brief Implements the application GUI
@@ -128,6 +135,12 @@ private:
      * @param sensorId ID of the sensor to fetch values for
      */
     static void FetchSensorValues(int sensorId);
+
+    bool showLocalDataWindow = false;
+    nlohmann::json localDatabase;
+    map<int, bool> expandedRecords;
+
+    void ShowLocalDataWindow();
 
 
 };

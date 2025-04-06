@@ -65,8 +65,6 @@ bool SensorsData::ParseSensorValues(const string &jsonStr) {
         //Parse string
         auto json = json::parse(jsonStr);
 
-        cout<<json<<endl;
-
         //Clear all previous sensor values
         for (auto& sensor : sensors) {
             sensor.sensorsValues.clear();
@@ -125,8 +123,6 @@ bool SensorsData::ParseSensorValues(const string &jsonStr) {
                             sensorValue.value = 0.0;
                         }
 
-                        cout<<sensorValue.data<<endl;
-                        cout<<sensorValue.value<<endl;
                         //add struct to sensors vector
                         sensor.sensorsValues.push_back(sensorValue);
                     }
